@@ -184,6 +184,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](./LICEN
 
 ## ✨ Author
 
-**S. Hisham**  
-💼 Backend Engineer | Java & NLP Enthusiast  
+**Said Hisham**  
+💼 Backend Engineer specializing in Java, Spring Boot, and NLP-driven applications  
+🧠 Focused on building scalable microservices with clean architecture and modern DevOps practices  
 🔗 [LinkedIn](https://www.linkedin.com/in/syedhisham41) | [GitHub](https://github.com/syedhisham41)
