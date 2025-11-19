@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>JD Dashboard</title>
+	<link rel="stylesheet" th:href="@{/css/viewpage.css}">
+</head>
+
+<body>
+	<div class="dashboard">
+		<h2>Job Descriptions Dashboard</h2>
+
+		<div class="header-bar-simple">
+			<div class="header-panel">
+				<p class="dashboard-tagline">Manage all Job Descriptions efficiently</p>
+
+				<div class="header-content">
+					<div class="stat-card">
+						<h4>42</h4>
+						<p>Total JDs</p>
+					</div>
+
+					<div class="stat-card">
+						<h4>01 Oct 2025</h4>
+						<p>Last Uploaded</p>
+					</div>
+
+					<button class="upload-btn" onclick="window.location.href='/jdupload'">
+						Upload New JD
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Recently Uploaded -->
+		<div class="recent-container">
+			<h3>Recently Uploaded</h3>
+			<div class="latest-section-container">
+				<div class="latest-section">
+					<div class="jd-paper" data-jd-id="ML Engineer">
+						<div class="corner-fold"></div>
+						<h4>Frontend Dev</h4>
+						<p>TechCorp</p>
+					</div>
+					<div class="jd-paper" data-jd-id="Backend Eng">
+						<div class="corner-fold"></div>
+						<h4>Backend Eng</h4>
+						<p>DevStudio</p>
+					</div>
+					<div class="jd-paper" data-jd-id="Data Analyst">
+						<div class="corner-fold"></div>
+						<h4>Data Analyst</h4>
+						<p>AI Corp</p>
+					</div>
+					<div class="jd-paper" data-jd-id="ML Engineer2">
+						<div class="corner-fold"></div>
+						<h4>ML Engineer</h4>
+						<p>VisionX</p>
+					</div>
+					<div class="jd-paper" data-jd-id="QA Lead">
+						<div class="corner-fold"></div>
+						<h4>QA Lead</h4>
+						<p>Testify</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Search -->
+		<div class="search-container">
+			<div class="search-bar">
+				<input type="text" id="searchJD" placeholder="Search by keyword...">
+				<select id="filterCompany">
+					<option value="">All Companies</option>
+					<option>TechCorp</option>
+					<option>DevStudio</option>
+					<option>AI Corp</option>
+					<option>Testify</option>
+				</select>
+				<select id="filterTitle">
+					<option value="">All Titles</option>
+					<option>Frontend Dev</option>
+					<option>Backend Eng</option>
+					<option>Data Analyst</option>
+					<option>QA Lead</option>
+				</select>
+				<button id="searchBtn">Search</button>
+			</div>
+		</div>
+
+		<!-- All Job Descriptions -->
+		<div class="jd-list" id="jdListContainer">
+			<div class="jd-item" id="ML Engineer">
+				<div class="jd-item-header">
+					<h4>Machine Learning Engineer</h4>
+					<span>AI Corp — Uploaded 03 Oct 2025</span>
+				</div>
+				<div class="jd-item-content">
+					<p><strong>Extracted Skills:</strong> Python, TensorFlow, Scikit-learn</p>
+					<p><strong>Qualification:</strong> B.Tech / M.Tech in CS or AI</p>
+					<p><strong>JD Content:</strong> Responsible for designing ML models, building pipelines,
+						collaborating with data engineers, ensuring high accuracy in predictions, deploying models to
+						production, and staying updated with AI research.</p>
+					<p><strong>Last Analyzed:</strong> 05 Oct 2025</p>
+					<div class="jd-actions">
+						<button>Analyze JD</button>
+						<button>Match with Resume</button>
+						<button>Delete</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="jd-item" id="Backend Eng">
+				<div class="jd-item-header">
+					<h4>Full Stack Developer</h4>
+					<span>DevStudio — Uploaded 02 Oct 2025</span>
+				</div>
+				<div class="jd-item-content">
+					<p><strong>Extracted Skills:</strong> React, Node.js, SQL, Docker</p>
+					<p><strong>Qualification:</strong> B.Tech in Computer Science</p>
+					<p><strong>JD Content:</strong> Develop and maintain front-end and back-end systems, integrate APIs,
+						ensure responsive UI, optimize performance, write unit tests, and collaborate with QA team.</p>
+					<p><strong>Last Analyzed:</strong> 03 Oct 2025</p>
+					<div class="jd-actions">
+						<button>Analyze JD</button>
+						<button>Match with Resume</button>
+						<button>Delete</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="jd-item" id="QA Lead">
+				<div class="jd-item-header">
+					<h4>QA Automation Engineer</h4>
+					<span>Testify Labs — Uploaded 01 Oct 2025</span>
+				</div>
+				<div class="jd-item-content">
+					<p><strong>Extracted Skills:</strong> Selenium, TestNG, CI/CD</p>
+					<p><strong>Qualification:</strong> B.Sc. in Information Technology</p>
+					<p><strong>JD Content:</strong> Design automation test cases, maintain test scripts, integrate with
+						CI/CD pipelines, monitor test coverage, report defects, and ensure quality delivery of software
+						products.</p>
+					<p><strong>Last Analyzed:</strong> 02 Oct 2025</p>
+					<div class="jd-actions">
+						<button>Analyze JD</button>
+						<button>Match with Resume</button>
+						<button>Delete</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="spinner-overlay" class="spinner-overlay" style="display:none;">
+	  <div class="gradient-spinner"></div>
+	</div>
+	<!-- Link external JS -->
+	<script src="/js/viewpage.js" defer></script>
+</body>
+
+</html>

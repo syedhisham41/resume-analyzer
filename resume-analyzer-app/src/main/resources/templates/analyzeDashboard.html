@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Analysis Dashboard</title>
+	<link rel="stylesheet" th:href="@{/css/analyzepage.css}" />
+	<link rel="stylesheet" th:href="@{/css/common.css}" />
+</head>
+
+<body>
+	<div class="dashboard" data-analyze-page>
+		<h2>Analysis Dashboard</h2>
+
+		<!-- ===== HEADER SECTION (UNCHANGED FROM YOUR ORIGINAL) ===== -->
+		<div class="header-bar-simple">
+			<div class="header-panel">
+				<p class="dashboard-tagline">Analyze resumes against job descriptions efficiently</p>
+
+				<div class="header-content">
+					<div class="stat-card">
+						<h4 id="totalCount">0</h4>
+						<p>Total Analyses</p>
+					</div>
+
+					<div class="stat-card">
+						<h4 id="lastUploadedDate">-</h4>
+						<p>Last Analysis</p>
+					</div>
+
+					<button class="upload-btn" id="openModalBtn">
+						Start New Analysis
+					</button>
+				</div>
+
+				<div class="dashboard-tagline-click" onclick="window.location.href='/dashboard'">
+					Go to Main Dashboard
+				</div>
+			</div>
+		</div>
+		<!-- ===== END HEADER (UNCHANGED) ===== -->
+
+
+		<!-- ===== SEARCH & HISTORY SECTION (follows your styling) ===== -->
+		<div class="recent-container">
+			<h3>Recently Analysed</h3>
+			<div class="latest-section-container">
+				<div class="latest-section" id="recentAnalyses">
+					<!-- JS will populate recent 5 analyses here -->
+				</div>
+			</div>
+		</div>
+
+		<div class="search-container">
+			<div class="search-bar">
+				<input type="text" id="searchInput" placeholder="Search by title...">
+
+				<!-- Date range picker (hidden by default) -->
+				<input type="date" id="startDate" style="display:none;">
+				<input type="date" id="endDate" style="display:none;">
+
+				<div class="search-toggles">
+					<button type="button" class="toggle-btn active" data-mode="title">Jd</button>
+					<button type="button" class="toggle-btn" data-mode="resume">Resume</button>
+					<button type="button" class="toggle-btn" data-mode="company">Company</button>
+					<button type="button" class="toggle-btn" data-mode="date">Date</button>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="analyze-list" id="allAnalyzes">
+			<!-- JS will populate all JDs here -->
+		</div>
+
+	</div>
+	<!-- toast/spinner fragments -->
+	<div id="toastContainer" class="toast-container"></div>
+	<div th:replace="~{fragments/modal-fragments :: deleteModal}"></div>
+	<div th:replace="~{fragments/modal-fragments :: alertModal}"></div>
+	<div th:replace="~{fragments/modal-fragments :: analyzeSelectionModal}"></div>
+	<div th:replace="~{fragments/modal-fragments :: analyzeCompletionModal}"></div>
+
+	<div th:replace="~{fragments/spinner-fragments :: spinner}"></div>
+	<script type="module" src="/js/common.js" defer></script>
+	<script type="module" src="/js/analyzedashboard.js" defer></script>
+
+</body>
+
+</html>

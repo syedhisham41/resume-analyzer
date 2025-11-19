@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Upload Resume - Resume Analyzer</title>
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+	<link rel="stylesheet" th:href="@{/css/uploadpage.css}">
+	<link rel="stylesheet" th:href="@{/css/viewpage.css}">
+</head>
+
+<body>
+	<div class="upload-card">
+		<h2>Upload Resume</h2>
+
+		<!-- Mode Selector -->
+		<div class="upload-options">
+			<button class="option-btn active" onclick="showSection('rawText')">Raw Text</button>
+			<button class="option-btn" onclick="showSection('pdf')">PDF</button>
+			<button class="option-btn" onclick="showSection('docx')">DOCX</button>
+		</div>
+
+		<div id="quickLinks1" style="display:none; text-align:center; margin-top:-20px;">
+			<a href="/dashboard">Back to User Dashboard</a>
+			<a href="/resumeview">Back to Resume Dashboard</a>
+		</div>
+
+		<!-- ===== Raw Text Section ===== -->
+		<div id="rawText" class="form-section active">
+			<div id="resumeBlock">
+				<label for="resumeContent">Paste Resume Text</label>
+				<textarea id="resumeContent" placeholder="Paste or type the resume here..."></textarea>
+
+				<div class="action-buttons">
+					<button class="primary-btn" data-type="resume" onclick="previewJD(this)">Preview & Upload</button>
+				</div>
+			</div>
+
+			<!-- Hidden Preview Section -->
+			<div id="hiddenFields" class="hidden-fields fade-in">
+
+				<div class="name-group">
+					<div class="name-label-row">
+						<label for="customResumeName">Resume Title :</label>
+						<span id="defaultResumeName" class="default-name"></span>
+					</div>
+					<input id="customResumeName" type="text" placeholder="Type to change the name (optional)">
+				</div>
+
+				<div class="action-buttons">
+					<button class="primary-btn" onclick="confirmUpload()">Confirm Upload</button>
+				</div>
+			</div>
+
+			<!-- Post-upload buttons -->
+
+		</div>
+
+
+
+		<!-- PDF Upload -->
+		<div id="pdf" class="form-section" data-file-type="pdf" data-category="resume">
+			<label>Upload PDF File</label>
+			<div class="file-upload">Click or drag & drop PDF here</div>
+		</div>
+
+		<!-- DOCX Upload -->
+		<div id="docx" class="form-section" data-file-type="docx" data-category="resume">
+			<label>Upload DOCX File</label>
+			<div class="file-upload">Click or drag & drop DOCX here</div>
+		</div>
+
+		<div id="postUpload" class="action-buttons post-upload">
+			<button class="secondary-btn">Analyze Resume</button>
+			<button class="secondary-btn">Upload JD + Analyze</button>
+			<button class="secondary-btn">Analyze with Existing JD</button>
+		</div>
+		<div id="quickLinks" style="display:none; text-align:center; margin-top:20px;"></div>
+	</div>
+
+	<div id="toastContainer" class="toast-container"></div>
+	<div th:replace="~{fragments/modal-fragments :: alertModal}"></div>
+	<div th:replace="~{fragments/modal-fragments :: analyzeModal}"></div>
+	<div th:replace="~{fragments/spinner-fragments :: spinner}"></div>
+	<div th:replace="~{fragments/modal-fragments :: analyzeSelectionModal}"></div>
+	<div th:replace="~{fragments/modal-fragments :: analyzeCompletionModal}"></div>
+	<script type="module" src="/js/uploadpage.js" defer></script>
+</body>
+
+</html>

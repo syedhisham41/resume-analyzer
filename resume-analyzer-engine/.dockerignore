@@ -1,0 +1,55 @@
+# --- Python environment ---
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+
+# --- OS / editor junk ---
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- Logs / outputs ---
+*.log
+logs/
+*.out
+
+# --- Data dumps / temp ---
+tmp/
+temp/
+*.tmp
+*.bak
+*.old
+
+# --- HuggingFace / SpaCy caches ---
+.cache/
+.huggingface/
+__huggingface__/
+*.bin
+
+# --- Virtual environment leftovers ---
+env/
+venv/
+
+# --- Build / dist files ---
+build/
+dist/
+*.egg-info/
+
+# --- Local test / notebook files ---
+*.ipynb
+notebooks/
+tests/
+
+# --- Git ---
+.git/
+.gitignore
+
+# --- Other local scripts or large assets ---
+# (only include what you actually need inside the container)
+scripts/

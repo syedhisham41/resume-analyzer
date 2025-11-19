@@ -1,0 +1,142 @@
+<!-- templates/fragments/modal-fragments.html -->
+<div th:fragment="deleteModal">
+	<div id="deleteModal" class="modal-overlay">
+		<div class="modal-glass-box hidden">
+			<h3>Confirm Delete</h3>
+			<p>Are you sure you want to delete this item?</p>
+			<div class="modal-buttons">
+				<button id="confirmDeleteBtn">Yes, Delete</button>
+				<button id="cancelDeleteBtn">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div th:fragment="alertModal">
+	<div id="alertModal" class="modal-overlay">
+		<div class="modal-glass-box hidden">
+			<h3>Alert</h3>
+			<p id="alertMessage">This is an alert message</p>
+			<div class="modal-buttons">
+				<button id="alertOkBtn">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div th:fragment="analyzeModal">
+	<div id="analyzeModal" class="analyze-modal-overlay">
+		<div class="analyze-modal-box">
+			<!-- Header -->
+			<div class="analyze-modal-header">
+				<h3 id="analyzeModalTitle">Skills Analysis</h3>
+				<button class="analyze-close-btn" id="analyzeCloseBtn">&times;</button>
+			</div>
+
+			<!-- Content -->
+			<div class="analyze-modal-content">
+				<!-- Skill count badge -->
+				<div id="skillCountContainer">
+					<span id="skillsCount" class="skill-count-badge">0 Skills</span>
+				</div>
+
+				<!-- Skills list -->
+				<div class="analyze-section active" id="parsedSkillsSection">
+					<ul id="parsedSkills"></ul>
+				</div>
+			</div>
+
+			<!-- Footer -->
+			<div class="analyze-modal-footer">
+				<button id="closeAnalyzeModalBtn">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- JD + Resume Selection Modal -->
+<div th:fragment="analyzeSelectionModal">
+	<div id="analyzeSelectionModal" class="analyze-selection-modal-overlay hidden" aria-hidden="true">
+		<div class="analyze-selection-modal-container" role="dialog" aria-modal="true"
+			aria-labelledby="analyzeSelectionModalTitle">
+
+			<!-- Header -->
+			<div class="analyze-selection-modal-header">
+				<h2 id="analyzeSelectionModalTitle">Start New Analysis</h2>
+				<button class="analyze-selection-close-btn" id="closeSelectionModalBtn" aria-label="Close">✕</button>
+			</div>
+
+			<!-- JD Selection Step -->
+			<section id="jdStep" class="modal-step active-step">
+				<div class="modal-card">
+					<div class="modal-search-container">
+						<input id="jdSearchInput" type="text" placeholder="Search JD by title, company, or date..." />
+						<button id="jdSearchBtn">Search</button>
+					</div>
+					<p class="modal-subtext">Or pick from recently uploaded job descriptions</p>
+					<div class="mini-a4-scroll-container">
+						<div class="mini-a4-row" id="recentJdsRow"></div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Resume Selection Step -->
+			<section id="resumeStep" class="modal-step hidden">
+				<div class="modal-card">
+					<div class="modal-search-container">
+						<input id="resumeSearchInput" type="text"
+							placeholder="Search Resume by candidate, skills, or date..." />
+						<button id="resumeSearchBtn">Search</button>
+					</div>
+					<p class="modal-subtext">Or pick from recent resumes</p>
+					<div class="mini-a4-scroll-container">
+						<div class="mini-a4-row" id="recentResumesRow"></div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Footer -->
+			<div class="modal-actions-row hidden" id="finalActionsRow">
+				<button class="modal-secondary" id="backBtn">Back</button>
+				<button class="modal-primary" id="runAnalysisBtn" disabled>Run Analysis</button>
+			</div>
+
+			<div class="modal-actions-row hidden" id="postAnalysisActionsRow">
+				<button class="modal-primary" id="selectionViewReportBtn">View Report</button>
+				<button class="modal-secondary" id="closePostAnalysisBtn">Close</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- JD + Resume Analysis Completion Modal -->
+<div th:fragment="analyzeCompletionModal">
+	<div id="completionModal" class="analyze-modal-overlay">
+		<div class="analyze-modal-glass-box hidden">
+			<h3>Analysis Completed</h3>
+			<p id="fitScoreValue">Fit Score -</p>
+			<div class="analyze-modal-buttons">
+				<button id="completionViewReportBtn">View Report</button>
+				<button id="completionCloseBtn">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Delete Account Modal Modal -->
+<div th:fragment="deleteAccountModal">
+	<div id="deleteAccountModal" class="modal-overlay">
+		<div class="modal-glass-box delete-account hidden">
+			<h3>Confirm Delete</h3>
+			<p>Are you sure you want to delete this Account ?</p>
+			<p><strong> NOTE : </strong> Deleting your account will lead to losing all information including Uploaded
+				Jds, resumes and Analysis Reports</p>
+			<div class="modal-buttons">
+				<button class="dlt-account-btn" id="confirmDltBtn">Yes, Delete</button>
+				<button class="cancelDltBtn" id="cancelDltBtn">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>

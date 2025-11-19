@@ -1,0 +1,168 @@
+qa engineer
+software test engineer
+test automation engineer
+quality assurance engineer
+automation developer
+test automation developer
+automation test engineer
+automation tester
+performance test engineer
+qa lead
+scrum master
+test engineer
+senior qa engineer
+qa manager
+test lead
+devops engineer
+site reliability engineer
+ml engineer
+machine learning engineer
+deep learning engineer
+data engineer
+senior data engineer
+data scientist
+senior data scientist
+ai engineer
+ai research engineer
+research engineer
+artificial intelligence engineer
+ai specialist
+lead ai engineer
+senior ai engineer
+senior artificial intelligence engineer
+artificial intelligence specialist
+senior artificial intelligence specialist
+senior ai specialist
+research scientist
+ml ops engineer
+software engineer
+software developer
+backend engineer
+backend developer
+senior backend developer
+senior backend engineer
+graduate software engineer
+frontend engineer
+frontend developer
+front-end developer
+senior frontend developer
+senior front-end developer
+senior frontend engineer
+full stack engineer
+full stack developer
+senior full stack developer
+senior full stack engineer
+python developer
+senior python developer
+python backend engineer
+senior python backend engineer
+python microservices engineer
+python microservices developer
+python full stack engineer
+java developer
+java microservices developer
+react engineer
+javascript engineer
+javascript developer
+java full stack engineer
+java backend engineer
+senior python microservices engineer
+senior python microservices developer
+senior python full stack engineer
+senior java developer
+senior java microservices developer
+senior react engineer
+senior javascript engineer
+senior javascript developer
+senior java full stack engineer
+senior java backend engineer
+specialist
+senior specialist
+java spring boot engineer
+java development engineer
+script developer
+blockchain developer
+smart contract developer
+security engineer
+test architect
+senior java spring boot engineer
+senior java development engineer
+senior script developer
+senior blockchain developer
+senior smart contract developer
+senior security engineer
+senior test architect
+architect
+senior architect
+ai architect
+senior project architect
+senior ai architect
+project architect
+lead architect
+chief architect
+solution architect
+senior solution architect
+software quality engineer
+ruby on rails engineer
+embedded software engineer
+senior embedded software engineer
+linux engineer
+senior linux engineer
+cybersecurity engineer
+senior cybersecurity engineer
+cybersecurity expert
+cybersecurity specialist
+cybersecurity developer
+software reliability engineer
+senior software reliability engineer
+mobile test engineer
+android engineer
+android developer
+api test engineer
+api test developer
+continuous integration engineer
+release engineer
+senior mobile test engineer
+senior android engineer
+senior android developer
+senior api test engineer
+senior api test developer
+senior continuous integration engineer
+senior release engineer
+test automation lead
+senior test automation developer
+senior automation engineer
+senior software engineer
+senior software developer
+senior machine learning engineer
+lead data scientist
+lead data engineer
+principal engineer
+ui engineer
+ux engineer
+senior ui engineer
+senior ux engineer
+project engineer
+senior project engineer
+project manager
+senior project manager
+delivery engineer
+senior delivery engineer
+delivery manager
+senior delivery manager
+project lead
+manager
+associate manager
+senior associate manager
+senior manager
+it professional
+junior it professional
+senior it professional
+it support engineer
+junior it support technician
+senior it support technician
+it support technician 
+technical support intern 
+consultant
+senior consultant
+technical consultant

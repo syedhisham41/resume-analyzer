@@ -1,0 +1,557 @@
+/* Body */
+body {
+	margin: 0;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background: linear-gradient(135deg, #FFF0E0 0%, #FFE1B8 100%);
+	color: #333;
+	display: flex;
+}
+
+/* Spinner overlay */
+.spinner-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 240, 224, 0.7);
+	/* soft overlay */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+}
+
+/* Gradient spinner */
+.gradient-spinner {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background: conic-gradient(#FFEAD8,
+			/* soft whiteish part */
+			#FFD399,
+			/* lighter & brighter orange */
+			rgb(255, 128, 0),
+			/* bright warm orange */
+			#FFEAD8
+			/* loop back to soft white */
+		);
+	animation: spin 1s linear infinite;
+	position: relative;
+}
+
+/* Inner circle for donut effect */
+.gradient-spinner::before {
+	content: "";
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	width: 44px;
+	height: 44px;
+	background: #fff8f0;
+	/* matches card background */
+	border-radius: 50%;
+}
+
+/* Spin animation */
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Sidebar */
+.dashboard-sidebar {
+	width: 220px;
+	background: linear-gradient(135deg, #E76520 5%, #FF8c42 100%);
+	/* warmer, darker orange */
+	height: 100vh;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 2px 0 12px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-sidebar .logo {
+	font-size: 20px;
+	font-weight: 600;
+	color: #fff;
+	margin-bottom: 40px;
+	text-align: center;
+}
+
+.dashboard-sidebar nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.dashboard-sidebar nav ul li {
+	margin-bottom: 20px;
+}
+
+.dashboard-sidebar nav ul li a {
+	display: block;
+	padding: 10px 12px;
+	border-radius: 8px;
+	text-decoration: none;
+	font-weight: 500;
+	color: #FFD1A3;
+	/* warm, light orange for visibility on dark-orange sidebar */
+	transition: all 0.3s ease;
+}
+
+.dashboard-sidebar nav ul li a:hover {
+	background: linear-gradient(90deg, #FFB366, #E76530);
+	/* subtle gradient on hover */
+	color: #fff;
+	/* text turns white for better contrast */
+	transform: translateX(4px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Dashboard Container */
+.dashboard-container {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+/* Header */
+.dashboard-header {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 16px 32px;
+	background: #fff8f0;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header .user-menu button {
+	background: linear-gradient(135deg, #FFB366 0%, #FF8c42 100%);
+	/* subtle vibrant orange */
+	color: #fff;
+	border: none;
+	padding: 6px 16px;
+	border-radius: 12px;
+	cursor: pointer;
+	font-weight: 600;
+	transition: all 0.3s ease;
+}
+
+.dashboard-header .user-menu button:hover {
+	background: linear-gradient(135deg, #FF7A3F 0%, #FF7A3F 80%, #E76530 100%);
+	transform: translateY(-1px) scale(1.02);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* Main Content */
+.dashboard-main {
+	padding: 24px 32px;
+	overflow-y: auto;
+	scrollbar-color:  #FF6F42 #FFF5ED;
+}
+
+.user-info {
+	margin-bottom: 30px;
+}
+
+.user-card {
+	background: #fff8f0;
+	border-radius: 16px;
+	padding: 24px;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+	transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.user-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Header: avatar + name */
+.user-header {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.user-avatar {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	margin-right: 20px;
+	border: 2px solid #FF924F;
+}
+
+.user-name-role h2 {
+	margin: 0;
+	font-size: 22px;
+	color: #FF924F;
+}
+
+.user-name-role p {
+	margin: 4px 0 0 0;
+	color: rgb(64, 0, 64);
+	font-weight: 300;
+	font-size: 0.8rem;
+}
+
+/* User stats mini-cards */
+.user-stats {
+	display: flex;
+	gap: 20px;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.user-stats .stat {
+	flex: 1;
+	background: rgb(252, 221, 180);
+	border-radius: 12px;
+	padding: 12px 16px;
+	text-align: center;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	transition: transform 0.2s;
+}
+
+.user-stats .stat:hover {
+	transform: translateY(-2px);
+}
+
+.user-stats .stat p {
+	margin: 0;
+	font-size: 14px;
+	color: #555;
+}
+
+.user-stats .stat span {
+	display: block;
+	font-size: 18px;
+	font-weight: 600;
+	margin-top: 6px;
+	color: #FF924F;
+}
+
+/* User actions buttons */
+.user-actions {
+	display: flex;
+	gap: 12px;
+	justify-content: flex-end;
+}
+
+/* Cards */
+.cards-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 20px;
+	margin-bottom: 32px;
+}
+
+.cards-container .card {
+	background: rgb(252, 221, 180);
+	border-radius: 16px;
+	padding: 20px;
+	text-align: center;
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+	transition: transform 0.2s;
+}
+
+.cards-container .card:hover {
+	transform: translateY(-4px);
+}
+
+.cards-container .card h3 {
+	margin-bottom: 12px;
+	color: #FF924F;
+}
+
+/* Placeholder charts/tables */
+.placeholder-chart,
+.placeholder-table {
+	background: #fff8f0;
+	border-radius: 12px;
+	padding: 20px;
+	text-align: center;
+	color: #555;
+	margin-bottom: 20px;
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.placeholder-table ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.placeholder-table ul li {
+	padding: 6px 0;
+	border-bottom: 1px solid #ffdcb1;
+}
+
+/* Dropdown */
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-toggle {
+	background: linear-gradient(135deg, #FF9B6A 0%, #FF7A3F 50%, #E76530 100%);
+	color: #fff;
+	border: none;
+	padding: 6px 12px;
+	border-radius: 12px;
+	cursor: pointer;
+	font-weight: 600;
+	transition: all 0.3s ease;
+}
+
+.dropdown-toggle:hover {
+	transform: translateY(-1px) scale(1.02);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.dropdown-menu {
+	display: none;
+	position: absolute;
+	right: 0;
+	background: #fff8f0;
+	border-radius: 20px;
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+	min-width: 160px;
+	z-index: 10;
+	padding: 8px 8px;
+}
+
+.dropdown-menu button {
+	width: 100%;
+	background: none;
+	border: none;
+	padding: 8px 16px;
+	text-align: left;
+	cursor: pointer;
+	font-weight: 500;
+	transition: background 0.2s;
+	margin-bottom: 8px;
+}
+
+.dropdown-menu button:hover {
+	background: linear-gradient(90deg, #FFB366, #E76530);
+	color: #fff;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+
+.user-actions button {
+	flex: 1;
+	background: linear-gradient(90deg, #FFB366 0%, #FF8c42 100%);
+	color: #555;
+	font-weight: 600;
+	border-radius: 12px;
+	border: none;
+	cursor: pointer;
+	padding: 10px 14px;
+	transition: all 0.3s ease;
+}
+
+.user-actions button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Grid layout for charts + recent activity */
+.charts-activity {
+	margin-top: 32px;
+}
+
+.charts-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	gap: 20px;
+}
+
+/* Adjust placeholders for consistency */
+.placeholder-chart,
+.placeholder-table,
+.recent-activity-card,
+.last-analysis-card {
+	background: #FF924F;
+	border-radius: 12px;
+	padding: 20px;
+	text-align: center;
+	color: #555;
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+	transition: transform 0.2s;
+}
+
+.placeholder-chart:hover,
+.placeholder-table:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.recent-activity-card:hover,
+.last-analysis-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.recent-activity-card .card-title .last-analysis-card {
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: #333;
+	margin-bottom: 1rem;
+}
+
+.activity-list {
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
+}
+
+.activity-list li {
+	background: #fcddb4;
+	border-radius: 8px;
+	padding: 0.55rem 0.85rem;
+	margin-bottom: 0.5rem;
+	font-size: 0.8rem;
+	color: #555;
+	border-left: 4px solid rgb(206, 103, 0);
+	/* purple accent */
+}
+
+.activity-list li:first-letter {
+	text-transform: uppercase;
+}
+
+.analysis-summary-cards {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.metric-card {
+	background: rgb(217, 153, 4);
+	border-radius: 12px;
+	padding: 16px;
+	text-align: center;
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+	transition: transform 0.2s;
+}
+
+.metric-card:hover {
+	transform: translateY(-2px);
+}
+
+.metric-card h4 {
+	margin: 0;
+	font-size: .8rem;
+	font-weight: 900;
+	color: #FF924F;
+}
+
+.metric-card p {
+	margin: 8px 0 0 0;
+	font-size: .8rem;
+	font-weight: 800;
+	color: rgb(217, 153, 4);
+}
+
+/* Last Analysis Charts Section */
+#skillDistributionChart {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+/* Each chart card styling (match dashboard metric cards) */
+.chart-section {
+  background: rgb(252, 221, 180);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 200px; /* flexible width for responsive layout */
+  min-width: 180px;
+}
+
+/* Chart titles */
+.chart-title {
+  font-weight: 800;
+  color: #FF924F;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Donut chart canvas */
+#skillBreakdownChart,
+#fitCompositionChart {
+  width: 180px !important;
+  height: 180px !important;
+}
+
+/* ===== Recent Activity ===== */
+.recent-activity-card {
+	padding: 20px;
+}
+
+.activity-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.activity-item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	background: #fff8f0;
+	padding: 8px 10px;
+	border-radius: 12px;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+	font-size: 0.8rem; /* smaller font */
+}
+
+.activity-icon {
+	width: 16px;
+	height: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.75rem;
+	color: #555;
+	flex-shrink: 0;
+}
+
+.activity-info {
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
+.activity-details {
+	font-weight: 500;
+	color: #444;
+}
+
+.activity-meta {
+	color: #777;
+	font-size: 0.7rem;
+}

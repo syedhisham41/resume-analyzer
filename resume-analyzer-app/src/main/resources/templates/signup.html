@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Sign Up - Resume Analyzer</title>
+	<style>
+		body {
+			margin: 0;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background: linear-gradient(135deg, #FFF2E0 0%, #FFD8AA 100%);
+			color: #333;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.card {
+			background: #fff8f0;
+			border-radius: 16px;
+			padding: 40px 30px;
+			width: 380px;
+			box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+			text-align: center;
+		}
+
+		h2 {
+			margin-bottom: 20px;
+			color: #FF6F42;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		input[type="text"],
+		input[type="email"],
+		input[type="password"],
+		input[type="currentCompany"],
+		input[type="currentRole"] {
+			padding: 12px 14px;
+			border-radius: 10px;
+			border: 1px solid #ddd;
+			font-size: 16px;
+			transition: border 0.3s;
+		}
+
+		input:focus {
+			outline: none;
+			border-color: #FF8C42;
+			box-shadow: 0 0 5px rgba(255, 111, 30, 0.4);
+		}
+
+		.primary-btn {
+			border: none;
+			padding: 14px 32px;
+			font-size: 16px;
+			border-radius: 12px;
+			cursor: pointer;
+			font-weight: 600;
+			color: #fff;
+			background: linear-gradient(135deg, #FF8C42 0%, #FF6F1E 100%);
+			box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+			transition: all 0.3s ease;
+			margin-top: 10px;
+		}
+
+		.primary-btn:hover {
+			transform: translateY(-2px) scale(1.02);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+		}
+
+		.guest-wrapper {
+			margin-top: 30px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 8px;
+		}
+
+		.guest-btn {
+			border: 1px solid #FF8C42;
+			background: transparent;
+			color: #FF8C42;
+			border-radius: 10px;
+			padding: 6px 20px;
+			font-size: 14px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		.guest-btn:hover {
+			background: #FF8C42;
+			color: #fff;
+			transform: translateY(-1px);
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+		}
+
+		.login-link {
+			margin-top: 12px;
+			font-size: 14px;
+			color: #555;
+		}
+
+		.login-link a {
+			color: #FF6F42;
+			text-decoration: none;
+			font-weight: 500;
+		}
+
+		.login-link a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="card">
+		<h2>Create Your Account</h2>
+		<form id="signupForm">
+			<input type="text" id="name" placeholder="Full Name" required>
+			<input type="text" id="userName" placeholder="Username" required>
+			<input type="email" id="email" placeholder="Email" required>
+			<input type="password" id="password" placeholder="Password" required>
+			<input type="currentCompany" id="currentCompany" placeholder="Current Company" required>
+			<input type="currentRole" id="currentRole" placeholder="Current Role" required>
+			<button type="submit" class="primary-btn">Sign Up</button>
+		</form>
+
+		<div class="guest-wrapper">
+			<div>Want to explore first?</div>
+			<button class="guest-btn" onclick="window.location.href='/guest'">Try as Guest</button>
+		</div>
+
+		<div class="login-link">
+			Already have an account? <a href="/login">Login here</a>
+		</div>
+	</div>
+
+	<script>
+		document.getElementById("signupForm").addEventListener("submit", function (e) {
+			e.preventDefault();
+
+			const data = {
+				name: document.getElementById("name").value,
+				userName: document.getElementById("userName").value,
+				email: document.getElementById("email").value,
+				password: document.getElementById("password").value,  // match backend
+				currentCompany: document.getElementById("currentCompany").value,
+				currentRole: document.getElementById("currentRole").value
+			};
+
+			fetch('/api/user/signup', {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify(data)
+			})
+				.then(res => {
+					if (!res.ok) throw new Error("Signup failed");
+					return res.text();
+				})
+				.then(response => {
+					alert(response);
+					window.location.href = "/login";  // redirect to login
+				})
+				.catch(err => alert(err.message));
+		});
+	</script>
+</body>
+
+</html>

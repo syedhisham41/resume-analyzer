@@ -1,0 +1,220 @@
+ba
+b.a.
+bachelor of arts
+bachelor's degree
+bachelors degree
+bs
+b.s.
+bsc
+b.sc.
+b.s. computer science
+bachelor of science
+bachelor's degree in science
+b.tech
+btech
+b-tech
+bachelor of technology
+bachelor's degree in technology
+be
+b.e.
+bachelor of engineering
+bachelor's degree in engineering
+bca
+bachelor of computer applications
+mca
+master of computer applications
+ms
+m.s.
+msc
+m.sc.
+master of science
+master's degree
+masters degree
+m.tech
+mtech
+m-tech
+master of technology
+master's degree in technology
+me
+m.e.
+master of engineering
+master's degree in engineering
+mba
+master of business administration
+executive mba
+emd
+executive master’s degree
+phd
+ph.d.
+doctorate
+doctoral degree
+doctoral studies
+postdoctoral
+post doc
+associate degree
+diploma
+polytechnic diploma
+computer science
+cs
+software engineering
+computer engineering
+information technology
+it
+information systems
+is
+electrical engineering
+electronics engineering
+electronics and communication engineering
+ece
+mechanical engineering
+civil engineering
+aerospace engineering
+chemical engineering
+data science
+data analytics
+artificial intelligence
+ai
+machine learning
+ml
+statistics
+mathematics
+math
+applied mathematics
+physics
+computational physics
+operations research
+cyber security
+cybersecurity
+security engineering
+stem
+stem majors
+science technology engineering and mathematics
+bioinformatics
+computational biology
+health informatics
+business analytics
+management information systems
+mis
+bachelor's degree in computer science
+bachelor's degree in software engineering
+bachelor's degree in information technology
+bachelor's degree in computer engineering
+bachelor's degree in electrical engineering
+bachelor's degree in electronics engineering
+bachelor's degree in data science
+bachelor's degree in statistics
+bachelor's degree in mathematics
+bachelor's degree in physics
+bachelor's degree in stem
+ba/bs in computer science
+ba/bs degree in computer science or related field
+bs degree in computer science
+bs degree in engineering
+bs degree in information systems
+bsc in computer science
+bsc in it
+btech in computer science
+b.tech in computer science & engineering
+btech in information technology
+btech in electronics
+be in computer science
+be in it
+be in electronics engineering
+be in mechanical engineering
+be in civil engineering
+mca in computer applications
+msc in computer science
+msc in data science
+msc in mathematics
+msc in statistics
+ms in computer science
+ms in engineering
+ms in information systems
+mtech in computer science
+mtech in information technology
+mtech in data science
+me in engineering
+master's degree in computer science
+master's degree in engineering
+master's degree in stem
+master's degree in mathematics
+master's degree in statistics
+mba in information technology
+mba in analytics
+phd in computer science
+phd in engineering
+phd in mathematics
+phd in statistics
+phd in physics
+doctorate in computer science
+doctorate in engineering
+pmp
+project management professional
+csm
+certified scrum master
+cspo
+certified scrum product owner
+six sigma
+lean six sigma
+itil
+information technology infrastructure library
+aws certified solutions architect
+aws certified developer
+aws certified sysops administrator
+aws certified machine learning
+microsoft certified azure fundamentals
+microsoft certified azure solutions architect
+microsoft certified data engineer
+gcp certified professional cloud architect
+gcp certified data engineer
+google professional cloud developer
+oracle certified professional
+aws cloud practitioner
+google cloud practitioner
+oracle cloud practitioner
+ocp
+ocjp
+oracle certified java programmer
+oracle certified associate
+oca
+cisco certified network associate
+ccna
+cisco certified network professional
+ccnp
+cisco certified internetwork expert
+ccie
+red hat certified engineer
+rhce
+red hat certified system administrator
+rhsa
+certified kubernetes administrator
+cka
+certified kubernetes application developer
+ckad
+terraform certification
+hashicorp certified terraform associate
+docker certification
+kubernetes certification
+salesforce certified administrator
+salesforce certified developer
+cfa
+chartered financial analyst
+any stem major
+education qualification: be, mca, or equivalent
+degree or equivalent experience
+degree or certification
+degree or diploma
+degree preferred
+degree required
+master’s degree preferred
+phd preferred
+phd is a plus
+advanced degree preferred
+formal training or certification
+industry certification
+professional certification
+vocational training
+technical diploma
+technical certification
+bootcamp graduate
+

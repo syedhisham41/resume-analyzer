@@ -1,0 +1,407 @@
+/* ===== Base & Body ===== */
+body {
+	margin: 0;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background: linear-gradient(135deg, #FFF4E5 0%, #FFE0B0 100%);
+	color: #333;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 50px 20px;
+}
+
+/* ===== Card ===== */
+.upload-card {
+	background: #fffaf3;
+	border-radius: 16px;
+	padding: 40px;
+	width: 850px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+h2 {
+	text-align: center;
+	color: #FF6F42;
+	margin-bottom: 10px;
+}
+
+/* ===== Upload Options ===== */
+.upload-options {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	flex-wrap: wrap;
+}
+
+.option-btn {
+	border: 2px solid #FF8C42;
+	background: transparent;
+	color: #FF8C42;
+	padding: 12px 28px;
+	border-radius: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.option-btn:hover,
+.option-btn.active {
+	background: linear-gradient(135deg, #FF8C42 0%, #FF6F1E 100%);
+	color: #fff;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Form Sections ===== */
+.form-section {
+	display: none;
+	flex-direction: column;
+	gap: 18px;
+	background: #fff;
+	padding: 25px;
+	border-radius: 14px;
+	border: 1px solid #FFE0C0;
+}
+
+.form-section.active {
+	display: flex;
+}
+
+label {
+	font-weight: 600;
+	color: #444;
+	margin-bottom: 5px;
+}
+
+input[type="text"],
+select,
+textarea {
+	padding: 11px;
+	border-radius: 10px;
+	border: 1px solid #ddd;
+	font-size: 14px;
+	resize: vertical;
+	transition: border-color 0.3s, box-shadow 0.3s, height 0.5s ease, padding 0.5s ease, opacity 0.5s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	border-color: #FF8C42;
+	box-shadow: 0 0 6px rgba(255, 111, 30, 0.25);
+	outline: none;
+}
+
+/* ===== JD Block & Textarea ===== */
+#jdBlock {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	overflow: hidden;
+	transition: max-height 0.5s ease, opacity 0.4s ease;
+	max-height: 1000px;
+	/* fully expanded */
+}
+
+/* Partial retraction: moves bottom up, textarea stays same */
+#jdBlock.partial-retract {
+	max-height: 350px;
+	/* adjust based on preview height */
+	opacity: 0.95;
+}
+
+/* Full retraction: hide entire block */
+#jdBlock.full-retract {
+	max-height: 0;
+	opacity: 0;
+}
+
+#jdContent {
+	height: 300px;
+	/* fixed height */
+	min-height: 300px;
+	width: 100%;
+	padding: 12px;
+	font-size: 14px;
+	border-radius: 10px;
+	border: 1px solid #ddd;
+	box-sizing: border-box;
+	resize: vertical;
+	transition: none;
+	/* no height transition */
+}
+
+/* ===== File Upload Block ===== */
+.file-upload {
+	border: 2px dashed #FFB377;
+	padding: 40px;
+	text-align: center;
+	border-radius: 14px;
+	background: #FFF5EB;
+	color: #FF6F1E;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.file-upload.hidden {
+	display: none;
+}
+
+.file-upload:hover {
+	background: #FFEAD8;
+	transform: scale(1.02);
+}
+
+/* ===== Buttons ===== */
+.action-buttons {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 15px;
+	margin-top: 10px;
+}
+
+.primary-btn,
+.secondary-btn {
+	border: none;
+	border-radius: 12px;
+	font-size: 15px;
+	font-weight: 600;
+	padding: 12px 24px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.primary-btn {
+	background: linear-gradient(135deg, #FF8C42 0%, #FF6F1E 100%);
+	color: #fff;
+}
+
+.primary-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+}
+
+.secondary-btn {
+	border: 1px solid #FF8C42;
+	background: transparent;
+	color: #FF8C42;
+}
+
+.secondary-btn:hover {
+	background: #FF8C42;
+	color: #fff;
+}
+
+/* ===== Hidden Preview Fields ===== */
+.hidden-fields {
+	display: none;
+	margin-top: 15px;
+	padding: 20px;
+	background: #FFF7EF;
+	border-radius: 12px;
+	border: 1px solid #FFD1A0;
+	animation: fadeIn 0.4s ease;
+}
+
+.hidden-fields.visible {
+	opacity: 1;
+	max-height: 500px;
+	/* enough to fully show content */
+}
+
+/* Smooth fade for Preview button */
+#rawText .action-buttons .primary-btn {
+	transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.dropdown-group {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 15px;
+}
+
+.dropdown-group label {
+	min-width: 120px;
+}
+
+.dropdown-group select,
+.dropdown-group input[type="text"] {
+	flex: 1;
+	font-size: 13px;
+	padding: 8px;
+	border-radius: 8px;
+}
+
+.dropdown-group input[type="text"] {
+	background: #FFE8CC;
+	border: 1px solid #FFC48A;
+	color: #333;
+}
+
+.dropdown-group input[type="text"].editable {
+	background: #fff;
+	border-color: #FF8C42;
+}
+
+.fade-in {
+	animation: fadeIn 0.4s ease;
+}
+
+/* ===== Post Upload Buttons ===== */
+/*
+.post-upload {
+	display: none;
+}
+
+.post-upload.visible {
+	display: flex;
+}
+*/
+
+.post-upload {
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.4s ease;
+	position: relative;
+		z-index: 10;
+}
+
+.post-upload.visible {
+	opacity: 1;
+	pointer-events: all;
+	display: flex; /* keep this if needed for layout */
+}
+
+/* ===== Quick Links ===== */
+#quickLinks a {
+	font-family: sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	color: rgb(249, 179, 100);
+	text-decoration: none;
+	margin: 0 12px;
+	transition: all 0.3s ease;
+}
+
+#quickLinks a:hover {
+	color: #FF6F1E;
+	transform: translateY(-2px);
+}
+
+#quickLinks1 a {
+	font-family: sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	color: rgb(249, 179, 100);
+	text-decoration: none;
+	margin: 0 10px;
+	transition: all 0.3s ease;
+}
+
+#quickLinks1 a:hover {
+	color: #FF6F1E;
+	transform: translateY(-2px);
+}
+
+/* ===== Resume Block & Textarea ===== */
+#resumeBlock {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	overflow: hidden;
+	transition: max-height 0.5s ease, opacity 0.4s ease;
+	max-height: 1000px;
+	/* fully expanded */
+}
+
+/* Partial retraction: moves bottom up, textarea stays same */
+#resumeBlock.partial-retract {
+	max-height: 350px;
+	/* adjust based on preview height */
+	opacity: 0.95;
+}
+
+/* Full retraction: hide entire block */
+#resumeBlock.full-retract {
+	max-height: 0;
+	opacity: 0;
+}
+
+#resumeContent {
+	height: 300px;
+	/* fixed height */
+	min-height: 300px;
+	width: 100%;
+	padding: 12px;
+	font-size: 14px;
+	border-radius: 10px;
+	border: 1px solid #ddd;
+	box-sizing: border-box;
+	resize: vertical;
+	transition: none;
+	/* no height transition */
+}
+
+.name-group {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.name-label-row {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between label and name */
+}
+
+.name-label-row label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.default-name {
+  font-size: 0.9rem;
+  color: #666;
+  background: #f8f8f8;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-family: monospace;
+  white-space: nowrap;
+}
+
+#customResumeName {
+  width: 90%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-family: monospace;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#customResumeName:focus {
+  border-color: rgb(255, 128, 64);
+}

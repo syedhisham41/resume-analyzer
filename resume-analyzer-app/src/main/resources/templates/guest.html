@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Guest Analyzer | Resume Analyzer</title>
+	<link rel="stylesheet" th:href="@{/css/guest.css}">
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+
+<body>
+	<div class="guest-container fade-in">
+		<h2>Try Resume Analyzer Instantly 🚀</h2>
+		<p class="subtext">Paste your Job Description and Resume below to see your match score.</p>
+
+		<div class="analyze-card">
+			<div class="input-wrapper">
+				<div class="input-section">
+					<div class="text-column">
+						<label for="jdText">Job Description</label>
+						<textarea id="jdText" placeholder="Paste your job description here..."></textarea>
+					</div>
+					<div class="text-column">
+						<label for="resumeText">Resume</label>
+						<textarea id="resumeText" placeholder="Paste your resume text here..."></textarea>
+					</div>
+				</div>
+
+				<div class="action-buttons">
+					<button id="analyzeBtn" class="primary-btn">Analyze Fit</button>
+					<button id="clearBtn" class="secondary-btn">Clear</button>
+				</div>
+
+				<div id="spinner" class="spinner hidden"></div>
+				<div id="resultCard" class="result-card">
+					<div class="fit-score-section">
+						<div class="fit-circle">
+							<span id="fitScore"></span>
+						</div>
+						<h3>Overall Fit Score</h3>
+						<div class="fit-verdict" id="fitVerdict">Analyzing your match...</div>
+					</div>
+
+					<div class="skills">
+						<h4>Top 5 Matching Skills</h4>
+						<ul id="skillList"></ul>
+						<p class="skills-note">These skills stood out the most in your resume</p>
+					</div>
+
+					<div class="tease-section fade-in">
+						<p>
+							<!-- Orange search icon -->
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#ff8c00"
+								viewBox="0 0 24 24" style="vertical-align:middle; margin-right:6px;">
+								<path
+									d="M10 2a8 8 0 105.29 14.29l4.71 4.71 1.42-1.42-4.71-4.71A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z" />
+							</svg> Want to know <strong>which skills are missing</strong> and how to boost your score?
+						</p>
+
+						<p>
+							✨ Curious about your <strong>action verbs</strong> and their impact?
+						</p>
+
+						<p>⚡ Discover what truly <strong>influenced your Fit Score</strong> and generate reports!</p>
+						<p>📜 View your <strong>past analyses</strong> and track your progress?</p>
+
+						<p class="tease-punch">
+							Sign up for free to unlock the full Resume Analyzer experience!
+						</p>
+
+						<a href="/signup" class="signup-btn">Sign Up for Free 🚀</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div th:replace="~{fragments/modal-fragments :: alertModal}"></div>
+	<script type="module" src="/js/common.js" defer></script>
+	<script type="module" src="js/guest.js" defer></script>
+</body>
+
+</html>

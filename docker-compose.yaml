@@ -1,0 +1,60 @@
+version: "3.9"
+
+services:
+  # Spring Boot Application
+  resume-analyzer-app:
+    build:
+      context: ./resume-analyzer-app
+      dockerfile: Dockerfile
+    container_name: resume-analyzer
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://resume-analyzer-db:3306/resume_analyzer
+      SPRING_DATASOURCE_USERNAME: said
+      SPRING_DATASOURCE_PASSWORD: said_14158
+      ML_SERVICE_URL: http://resume-analyzer-engine:8000/api
+    depends_on:
+      resume-analyzer-db:
+        condition: service_healthy
+      resume-analyzer-engine:
+        condition: service_started
+    networks:
+      - resume-net
+
+  # Python NLP microservice
+  resume-analyzer-engine:
+    build:
+      context: ./resume-analyzer-engine
+      dockerfile: Dockerfile
+    container_name: ml-service
+    ports:
+      - "8000:8000"
+    networks:
+      - resume-net
+
+  # MySQL Database
+  resume-analyzer-db:
+    image: mysql:8.0
+    container_name: resume-analyzer-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: said_14158
+      MYSQL_DATABASE: resume_analyzer
+      MYSQL_USER: said
+      MYSQL_PASSWORD: said_14158
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    networks:
+      - resume-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  resume-net:
+    driver: bridge

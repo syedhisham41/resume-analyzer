@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome - Resume Analyzer</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFF0E0 0%, #FFE1B8 100%);
+            color: #333;
+        }
+
+        header {
+            padding: 60px 20px 20px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 52px;
+        }
+
+        header p {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 40px 20px;
+        }
+
+        .feature-card {
+            background: #fff8f0;
+            border-radius: 16px;
+            width: 260px;
+            padding: 30px;
+            margin: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #FF6F42;
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .cta {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .main-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            border: none;
+            padding: 16px 42px;
+            font-size: 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, #FF8C42 0%, #FF6F1E 100%);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            transition: all 0.3s ease;
+            min-width: 180px;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+        }
+
+        .guest-wrapper {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .guest-text {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .guest-btn {
+            border: 1px solid #FF8C42;
+            background: transparent;
+            color: #FF8C42;
+            border-radius: 10px;
+            padding: 8px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .guest-btn:hover {
+            background: #FF8C42;
+            color: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .main-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Resume Analyzer</h1>
+    <p>Analyze, optimize, and match your resumes with job descriptions like a pro</p>
+</header>
+
+<section class="features">
+    <div class="feature-card">
+        <h3>Resume Parsing</h3>
+        <p>Upload your resumes in PDF or DOCX and extract key skills automatically.</p>
+    </div>
+    <div class="feature-card">
+        <h3>Job Matching</h3>
+        <p>Compare your resume with job descriptions and get instant match scores.</p>
+    </div>
+    <div class="feature-card">
+        <h3>Skill Suggestions</h3>
+        <p>Identify missing skills or keywords to improve your chances of getting shortlisted.</p>
+    </div>
+    <div class="feature-card">
+        <h3>ATS Optimization</h3>
+        <p>Make your resume ATS-friendly with formatting and section recommendations.</p>
+    </div>
+</section>
+
+<div class="cta">
+    <div class="main-buttons">
+        <button class="primary-btn" onclick="window.location.href='/signup'">Sign Up</button>
+        <button class="primary-btn" onclick="window.location.href='/login'">Login</button>
+    </div>
+
+    <div class="guest-wrapper">
+        <div class="guest-text">No account yet? Feeling adventurous?</div>
+        <button class="guest-btn" onclick="window.location.href='/guest'">Try as Guest</button>
+    </div>
+</div>
+
+<footer>
+    &copy; 2025 Resume Analyzer. All rights reserved.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,942 @@
+python
+java
+c
+c++
+c#
+go
+rust
+scala
+typescript
+javascript
+ruby
+php
+swift
+kotlin
+k8s
+objective-c
+lua
+perl
+r
+sql
+bash
+powershell
+html
+css
+xml
+json
+yaml
+graphql
+dart
+elixir
+clojure
+haskell
+f#
+vhdl
+verilog
+assembly
+matlab
+groovy
+actionscript
+tcl
+react
+angular
+vue.js
+spring boot
+django
+flask
+express.js
+laravel
+rails
+angularjs
+ember.js
+backbone.js
+svelte
+next.js
+nuxt.js
+nestjs
+spring mvc
+vcs 
+spring cloud
+spring security
+hibernate
+jpa
+entity framework
+django rest framework
+fastapi
+koa.js
+socket.io
+redux
+mobx
+rxjs
+junit
+pytest
+unittest
+mocha
+chai
+jest
+karma
+selenium
+appium
+cypress
+playwright
+git
+github
+gitlab
+bitbucket
+svn
+mercurial
+jenkins
+circleci
+travis ci
+docker
+kubernetes
+vagrant
+terraform
+ansible
+chef
+puppet
+helm
+maven
+gradle
+ant
+npm
+yarn
+bower
+webpack
+gulp
+grunt
+vscode
+intellij idea
+eclipse
+pycharm
+netbeans
+xcode
+android studio
+visual studio
+clion
+atom
+sublime text
+notepad++
+aws
+azure
+google cloud
+ibm cloud
+oracle cloud
+alibaba cloud
+digitalocean
+heroku
+netlify
+vercel
+cloudflare
+mysql
+dbms
+postgresql
+mongodb
+oracle db
+mssql
+redis
+cassandra
+couchdb
+neo4j
+elasticsearch
+sqlite
+firebase
+bigquery
+redshift
+snowflake
+hadoop
+spark
+hive
+impala
+presto
+athena
+tensorflow
+pytorch
+scikit-learn
+sci-kit learn
+t-test
+z-test
+keras
+mxnet
+pandas
+numpy
+matplotlib
+seaborn
+plotly
+scipy
+statsmodels
+nltk
+spacy
+openai
+huggingface
+fastai
+xgboost
+lightgbm
+catboost
+mlflow
+jupyter
+colab
+databricks
+android
+ios
+flutter
+react native
+xamarin
+arima 
+arimax
+bentoml
+svm 
+cntk 
+ionic
+cordova
+sass
+less
+bootstrap
+tailwind css
+material ui
+semantic ui
+jquery
+ajax
+rest api
+web sockets
+firewall
+vpn
+ssl
+tls
+ssh
+iptables
+nmap
+wireshark
+snort
+kali linux
+metasploit
+burp suite
+owasp
+penetration testing
+ethical hacking
+network security
+cloud security
+identity and access management
+encryption
+hashing
+rsa
+aes
+public key infrastructure
+gitlab ci
+prometheus
+grafana
+logstash
+kibana
+splunk
+new relic
+datadog
+linux
+windows
+macos
+ubuntu
+centos
+debian
+red hat
+fedora
+arch linux
+vmware
+hyper-v
+virtualbox
+pip
+conda
+composer
+nuget
+figma
+sketch
+adobe xd
+invision
+balsamiq
+axure
+zeplin
+photoshop
+illustrator
+affinity designer
+jira
+trello
+asana
+clickup
+notion
+confluence
+slack
+microsoft teams
+zoom
+google meet
+monday.com
+basecamp
+tableau
+power bi
+looker
+qlik
+sas
+soa
+excel
+analytics
+google analytics
+mixpanel
+heap
+segment
+postman
+swagger
+soapui
+loadrunner
+jmeter
+testng
+cucumber
+gauge
+oops
+object oriented programming
+functional programming
+microservices architecture
+monolithic architecture
+service-oriented architecture
+rest api development
+graphql api development
+serverless architecture
+event driven architecture
+api design
+api integration
+api testing
+backend development
+backend architecture
+frontend development
+full stack development
+mobile application development
+cross platform development
+web application development
+desktop application development
+embedded systems development
+internet of things development
+edge computing
+distributed systems
+highly available systems
+scalable systems
+scalable backend systems
+scalable frontend systems
+resilient systems
+multi tenant systems
+cloud native development
+containerized applications
+dockerization
+kubernetes orchestration
+ci/cd pipelines
+ci/cd tools
+automation testing
+manual testing
+unit testing
+integration testing
+end to end testing
+functional testing
+performance testing
+load testing
+stress testing
+security testing
+acceptance testing
+regression testing
+test driven development
+behavior driven development
+continuous testing
+qa automation
+selenium automation
+appium automation
+cypress automation
+pytest automation
+test framework design
+framework design
+framework development
+test case design
+test strategy
+quality assurance
+quality control
+cloud computing
+aws cloud
+azure cloud
+google cloud platform
+devops practices
+infrastructure as code
+configuration management
+continuous integration
+continuous deployment
+continuous delivery
+monitoring and logging
+application performance monitoring
+containerization
+docker orchestration
+kubernetes management
+terraform provisioning
+ansible automation
+helm chart management
+serverless deployments
+data engineering
+data analysis
+data science
+machine learning
+deep learning
+natural language processing
+computer vision
+reinforcement learning
+supervised learning
+unsupervised learning
+semi supervised learning
+predictive modeling
+data visualization
+big data processing
+etl pipeline development
+data warehouse design
+streaming data processing
+spark analytics
+hadoop ecosystem
+pandas data analysis
+numpy numerical computing
+scikit learn machine learning
+tensorflow deep learning
+euclidean distance
+manhattan distance
+hamming distance
+pytorch deep learning
+keras neural networks
+mlops
+model deployment
+feature engineering
+model evaluation
+hyperparameter tuning
+cybersecurity
+application security
+vulnerability assessment
+security audits
+firewall configuration
+intrusion detection
+identity access management
+encryption techniques
+tls ssl configuration
+security monitoring
+data privacy
+gdpr compliance
+iso27001 compliance
+hipaa compliance
+risk management
+incident response
+threat modeling
+responsive design
+mobile first design
+cross browser testing
+user experience design
+user interface design
+interactive design
+web accessibility
+a11y compliance
+frontend architecture
+react development
+angular development
+vue.js development
+svelte development
+next.js development
+nuxt.js development
+material design implementation
+design system creation
+prototyping and wireframing
+frontend testing
+business intelligence
+data analytics
+reporting dashboards
+excel analytics
+tableau dashboards
+power bi reporting
+qlikview reporting
+product analytics
+customer analytics
+marketing analytics
+data driven decision making
+requirements analysis
+process automation
+workflow optimization
+agile methodologies
+scrum
+kanban
+lean software development
+continuous improvement
+software design patterns
+software refactoring
+code review
+pair programming
+version control best practices
+git workflow management
+branching strategies
+release management
+dependency management
+performance optimization
+scalability design
+reliability engineering
+observability
+blockchain development
+smart contract development
+cryptocurrency protocols
+iot device integration
+edge computing solutions
+quantum computing concepts
+virtual reality development
+augmented reality development
+mixed reality applications
+game development
+graphics programming
+simulation development
+automation frameworks
+test framework development
+build automation
+release pipelines
+monitoring and alerting
+log management
+incident management
+troubleshooting complex systems
+root cause analysis
+c sharp
+c plus plus
+go programming language
+java programming language
+scala programming language
+kotlin programming language
+swift programming language
+objective c
+php programming language
+perl programming language
+r programming language
+matlab programming language
+bash scripting
+powershell scripting
+react framework
+angular framework
+vue.js framework
+next.js framework
+nuxt.js framework
+ember.js framework
+backbone.js framework
+svelte framework
+django framework
+flask framework
+fastapi framework
+spring boot framework
+hibernate orm framework
+laravel php framework
+symfony php framework
+codeigniter php framework
+ruby on rails framework
+express.js framework
+node.js runtime
+amazon web services cloud
+google cloud platform cloud
+microsoft azure cloud
+ibm cloud platform
+cloud infrastructure
+oracle cloud infrastructure
+digitalocean cloud
+cloudfoundry platform
+heroku platform
+kubernetes container orchestration
+docker containerization
+openshift container platform
+terraform infrastructure as code
+puppet configuration management
+chef configuration management
+jenkins continuous integration
+circleci continuous integration
+gitlab continuous integration
+bamboo ci/cd
+teamcity ci/cd
+artifactory repository manager
+nexus repository manager
+bitbucket version control
+git version control
+svn version control
+mercurial version control
+visual studio ide
+eclipse ide
+intellij idea ide
+pycharm ide
+webstorm ide
+netbeans ide
+android studio ide
+xcode ide
+vscode ide
+atom ide
+sublime text ide
+jira software management
+confluence wiki
+slack collaboration
+zoom video conferencing
+skype communication
+trello project management
+asana project management
+notion workspace
+database management systems
+postgresql relational database
+mysql relational database
+mariadb relational database
+oracle database
+sql server database
+sqlite embedded database
+mongodb document database
+cassandra distributed database
+redis in-memory database
+memcached in-memory storage
+elasticsearch search engine
+solr search platform
+apache kafka streaming
+kafka
+sagemaker
+sagemaker pipelines
+aws sagemaker
+rabbitmq
+rabbitmq messaging
+activemq messaging
+mqtt protocol
+apache storm stream processing  
+apache flink stream processing
+apache spark big data
+hive data warehouse
+pig scripting
+sqoop data transfer
+airflow workflow orchestration
+luigi workflow orchestration
+dbt data transformation
+scipy scientific computing
+matplotlib visualization
+seaborn data visualization
+plotly interactive visualization
+tensorflow machine learning
+keras deep learning
+demand forecasting
+forecasting algorithms
+forecasting models 
+forecasting systems
+risk functions
+mape 
+risk accuracy
+scikit-learn machine learning
+xgboost gradient boosting
+lightgbm gradient boosting
+catboost gradient boosting
+opencv computer vision
+nltk natural language processing
+spacy natural language processing
+gensim topic modeling
+huggingface transformers
+fasttext embeddings
+word2vec embeddings
+bert embeddings
+sentence transformers embeddings
+recurrent neural network
+convolutional neural network
+long short term memory network
+gru network
+q learning
+deep q learning
+policy gradient methods
+monte carlo tree search
+genetic algorithms
+support vector machines
+decision trees
+random forests
+logistic regression
+linear regression
+k nearest neighbors
+principal component analysis
+singular value decomposition
+t distributed stochastic neighbor embedding
+autoencoders
+variational autoencoders
+gan generative adversarial networks
+docker compose
+helm charts
+traefik reverse proxy
+nginx web server
+apache http server
+iis web server
+tomcat servlet container
+jetty servlet container
+glassfish server
+wildfly application server
+maven build automation
+gradle build automation
+ant build automation
+make build tool
+cmake build tool
+npm node package manager
+yarn package manager
+pip python package manager
+conda python package manager
+gem ruby package manager
+composer php package manager
+nuget .net package manager
+virtualenv python environment
+pyenv python environment manager
+rbenv ruby environment manager
+asdf version manager
+terraform cloud provisioning
+ansible playbooks
+chef recipes
+puppet manifests
+splunk monitoring
+datadog monitoring
+prometheus monitoring
+grafana visualization
+elk stack logging
+elk stack
+graylog logging
+new relic application monitoring
+dynatrace monitoring
+sentry error tracking
+rollbar error tracking
+bugsnag error tracking
+postman api testing
+soapui api testing
+swagger openapi documentation
+openapi specification
+ml related services
+raml api modeling
+graphql api
+json data interchange
+xml data interchange
+yaml configuration
+toml configuration
+ini configuration
+system testing
+user acceptance testing
+pytest testing framework
+unittest testing framework
+junit testing framework
+testng testing framework
+mocha javascript testing
+chai assertion library
+enzyme react testing
+jest javascript testing
+karma test runner
+protractor automation
+puppeteer automation
+playwright automation
+sql injection testing
+cross site scripting testing
+accessibility testing
+exploratory testing
+smoke testing
+sanity testing
+mobile testing
+android testing
+ios testing
+responsive design testing
+soap api testing
+rest api testing
+database testing
+database systems
+ui testing
+ux testing
+devops engineering
+site reliability engineering
+release engineering
+build engineering
+version control systems
+change management
+problem management
+capacity planning
+performance tuning
+network monitoring
+firewall management
+vpn configuration
+load balancer configuration
+dns management
+dhcp configuration
+tcp ip networking
+http protocol
+https protocol
+ssl tls configuration
+oauth authentication
+jwt tokens
+openid connect
+ldap authentication
+saml authentication
+active directory
+okta identity management
+ping identity management
+aws lambda
+aws s3
+aws ec2
+aws vpc
+aws rds
+aws dynamodb
+aws cloudfront
+aws sns
+aws sqs
+aws cloudwatch
+gcp compute engine
+gcp cloud storage
+gcp cloud functions
+gcp bigquery
+gcp pubsub
+azure virtual machine
+azure blob storage
+azure sql database
+azure functions
+docker swarm
+nomad scheduler
+consul service discovery
+vault secrets management
+istio service mesh
+linkerd service mesh
+envoy proxy
+haproxy proxy
+traefik proxy
+redis cluster
+redis sentinel
+memcached distributed caching
+caching
+mongodb sharding
+cassandra replication
+elasticsearch cluster
+solr indexing
+rabbitmq clustering
+kafka streams
+kafka connect
+spark streaming
+flink streaming
+storm stream processing
+airflow dag scheduling
+luigi workflow scheduling
+kubeflow machine learning
+mlflow model tracking
+dvc data versioning
+papermill parameterized notebooks
+jupyter notebooks
+jupyter lab
+colab notebooks
+r studio
+tableau visualization
+power bi visualization
+qlikview business intelligence
+looker analytics
+microstrategy bi
+qlik sense
+domo analytics
+apache superset
+metabase analytics
+snowflake cloud data warehouse
+redshift data warehouse
+bigquery analytics
+google data studio
+python scripting
+bash scripting automation
+powershell scripting automation
+ruby scripting
+perl scripting
+java scripting
+typescript scripting
+graphql queries
+sql queries
+nosql queries
+mongo queries
+cassandra queries
+hive queries
+pig scripts
+sqoop scripts
+spark sql
+pyspark scripts
+beam pipelines
+dataflow pipelines
+kafka topics
+rabbitmq queues
+mqtt topics
+tensorflow keras
+pytorch lightning
+torchvision
+opencv python
+dlib computer vision
+mediapipe hand tracking
+nltk text processing
+spacy nlp
+nlp
+generative ai
+genai tooling
+genai
+generative ai tooling
+model fine tuning
+model training
+prompt engineering
+prompting
+gensim word embeddings
+multithreading
+hld 
+lld 
+high level design
+low level design
+design patterns
+application design
+feature design 
+component design 
+rca 
+sdlc
+rapid application development
+rad 
+software development life cycle 
+code debugging
+unit testing
+mentoring juniors
+mentoring junior developers
+mentoring junior engineers
+guiding juniors
+guidance
+documentation
+project management
+knowledge management
+user interface development
+embedded software components
+data modelling 
+data modeling
+data models
+data mining 
+data visualization
+time series 
+operating systems
+operational research 
+integrated development environment
+ide
+business software components
+business management
+mentoring juniors
+guidance 
+statistical modeling data analysis tools
+statistical models
+statistical analysis
+recommender systems
+inference pipelines
+training pipeline
+model training pipelines
+similarity scoring
+regression
+llama
+claude
+gemini
+grok 
+classification 
+empirical systems
+empirical methods
+model algorithms
+production-grade ai/ml systems
+probabilistic graph models
+probability
+exponential smoothing
+hypothesis testing
+langchain
+langraph
+large language models
+llms
+llm
+queuing
+
+
+
+
+
+
+

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Reports Page - Resume Analyzer</title>
+	<link rel="stylesheet" href="/css/reports.css">
+	<link rel="stylesheet" href="/css/viewpage.css">
+</head>
+
+<body>
+	<div class="reports-dashboard">
+		<h2> Reports </h2>
+		<div class="header-bar-simple">
+			<div class="header-panel">
+				<p class="dashboard-tagline">View all reports</p>
+
+				<div class="header-content">
+					<div class="stat-card">
+						<h4 id="totalCount">0</h4>
+						<p>Total Reports</p>
+					</div>
+
+					<div class="stat-card">
+						<h4 id="lastUploadedDate">—</h4>
+						<p>Last Analysis</p>
+					</div>
+
+				</div>
+				<div class="sub-container">
+					<div class="dashboard-tagline-click" onclick="window.location.href='/dashboard'">
+						Go to Main Dashboard
+					</div>
+					<div class="dashboard-tagline-click" onclick="window.location.href='/analyzedashboard'">
+						Go to Analysis Dashboard
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ===== LEFT SIDEBAR ===== -->
+		<div class="sub-container">
+			<aside class="left-panel">
+				<div class="search-container">
+					<div class="search-bar">
+						<input id="searchInput" type="text" placeholder="Search analyses...">
+						<input id="startDate" type="date" title="Start Date">
+						<input id="endDate" type="date" title="End Date">
+					</div>
+				</div>
+
+
+				<div class="analysis-cards-container">
+					<div class="analysis-cards" id="analysis-cards">
+						<!-- Dynamic analysis cards will be populated here -->
+					</div>
+				</div>
+
+			</aside>
+
+			<!-- ===== RIGHT PANEL ===== -->
+			<main class="right-panel">
+				<!-- Hero Summary Snapshot -->
+				<div class="hero-card" id="hero-card-id" data-id="">
+					<div class="hero-top">
+						<div class="hero-header">
+							<h3 id="hero-jd-title">JD TITLE</h3>
+							<p class="jd-company" id="hero-jd-company">JD company</p>
+							<p class="resume-title" id="hero-resume-title">Resume Title</p>
+							<p class="analyze-date" id="hero-analyze-date">Analyzed Date</p>
+						</div>
+
+						<div class="hero-fit-circle">
+							<div class="fit-circle-large" id="hero-fit-percent">0%</div>
+							<div class="fit-comment" id="hero-fit-comment">Fit Score:</div>
+						</div>
+					</div>
+
+					<div class="hero-breakdown">
+						<div class="breakdown-item">
+							<span>Skill Match:</span>
+							<progress id="hero-skill-match" value="0.0" max="1"></progress>
+						</div>
+						<div class="breakdown-item">
+							<span>Verb Match:</span>
+							<progress id="hero-verb-match" value="0.0" max="1"></progress>
+						</div>
+						<div class="breakdown-item">
+							<span>Title Match:</span>
+							<progress id="hero-title-match" value="0.0" max="1"></progress>
+						</div>
+						<div class="breakdown-item">
+							<span>Qualification Match:</span>
+							<progress id="hero-qual-match" value="0.0" max="1"></progress>
+						</div>
+					</div>
+				</div>
+
+				<!-- Insights Section -->
+				<div class="report-insights" id="report-insights-id">
+					<div id="insightsHeader" class="header-row">
+						<h3>💡 Insights & Recommendations</h3>
+						<button id="toggleInsightsBtn" class="expand-btn">View Details ▼</button>
+					</div>
+					<div id="insightsContainer" class="insight-cards"></div>
+				</div>
+
+				<!-- Detailed Sections -->
+				<div class="detailed-analysis" id="detailed-analysis-id">
+					<div id="detailsHeader" class="header-row">
+						<h3>📊 Detailed Analysis</h3>
+						<button id="toggleDetailsBtn" class="expand-btn">View Details ▼</button>
+					</div>
+					<div id="detailsContent" class="details-content">
+						<!-- JS will populate this dynamically -->
+					</div>
+				</div>
+			</main>
+
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+	<script type="module" src="/js/reports.js" defer></script>
+
+</body>
+
+</html>

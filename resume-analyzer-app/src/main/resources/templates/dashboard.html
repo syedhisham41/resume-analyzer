@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Dashboard - Resume Analyzer</title>
+	<link rel="stylesheet" th:href="@{/css/dashboard.css}">
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+
+<body>
+	<!-- Spinner overlay -->
+	<div id="spinner-overlay" class="spinner-overlay" style="display:none;">
+		<div class="gradient-spinner"></div>
+	</div>
+
+	<!-- Sidebar -->
+	<aside class="dashboard-sidebar">
+		<div class="logo">Resume Analyzer</div>
+		<nav>
+			<ul>
+				<li><a href="/dashboard">Overview</a></li>
+				<li><a href="/resumeview">Resume Dashboard</a></li>
+				<li><a href="/jdview">JD Dashboard</a></li>
+				<li><a href="/analyzedashboard">Analysis Dashboard</a></li>
+				<li><a href="/reports">Reports</a></li>
+				<li><a href="/settings">Settings</a></li>
+			</ul>
+		</nav>
+	</aside>
+
+	<!-- Main Content -->
+	<div class="dashboard-container">
+
+		<!-- Header -->
+		<header class="dashboard-header">
+			<div class="user-menu">
+				<span id="welcomeMessage">Welcome, User</span>
+				<div class="dropdown">
+					<button class="dropdown-toggle">⚙️</button>
+					<div class="dropdown-menu">
+						<button id="editProfile">Edit Profile</button>
+						<button id="logoutButton">Logout</button>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- Main Dashboard Area -->
+		<main class="dashboard-main">
+
+			<!-- User Info Card -->
+			<section class="user-info">
+				<div class="user-card">
+					<div class="user-header">
+						<img src="/images/avatar.png" alt="User Avatar" class="user-avatar">
+						<div class="user-name-role">
+							<h2 id="userName"></h2>
+							<p id="userRole"></p>
+							<p id="userEmail"></p>
+						</div>
+					</div>
+
+					<div class="user-stats">
+						<div class="stat">
+							<p>Total Resumes</p>
+							<span id="totalResumes">0</span>
+						</div>
+						<div class="stat">
+							<p>Total JDs</p>
+							<span id="totalJDs">0</span>
+						</div>
+						<div class="stat">
+							<p>Analyses Completed</p>
+							<span id="totalAnalyzes">0</span>
+						</div>
+						<div class="stat">
+							<p>Avg ATS Score</p>
+							<span id="averageFit">0%</span>
+						</div>
+					</div>
+
+					<div class="user-actions">
+						<button id="uploadResume">Upload Resume</button>
+						<button id="uploadJD">Upload JD</button>
+						<button id="analyze">Analyze</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- Charts & Activity Section -->
+			<section class="charts-activity">
+				<div class="charts-grid">
+
+					<!-- Last Analysis Summary -->
+					<div class="card last-analysis-card">
+						<h3 class="card-title">Last Analysis Summary</h3>
+						<div id="lastAnalysisContent" class="analysis-summary-cards">
+
+							<!-- Individual summary cards -->
+							<div class="cards-container" id="lastAnalysisMetrics">
+								<!-- Populated dynamically via JS -->
+							</div>
+
+							<!-- Skill Distribution Charts -->
+							<div id="skillDistributionChart">
+								<!-- Populated dynamically via JS -->
+							</div>
+						</div>
+					</div>
+
+					<!-- Recent Activity -->
+					<div class="card recent-activity-card">
+						<h3 class="card-title">Recent Activity</h3>
+						<div id="recentActivityContent" class="recent-activity-content">
+							<ul id="recentActivityList" class="activity-list">
+								<!-- Populated dynamically via JS -->
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+		</main>
+	</div>
+
+
+	<div id="toastContainer" class="toast-container"></div>
+	<div th:replace="~{fragments/modal-fragments :: alertModal}"></div>
+	<div th:replace="~{fragments/modal-fragments :: analyzeSelectionModal}"></div>
+	<div th:replace="~{fragments/modal-fragments :: analyzeCompletionModal}"></div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script type="module" src="/js/common.js" defer></script>
+	<script type="module" src="/js/dashboard.js" defer></script>
+
+</body>
+
+</html>

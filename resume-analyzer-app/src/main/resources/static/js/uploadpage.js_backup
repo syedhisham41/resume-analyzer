@@ -1,0 +1,372 @@
+import { showSpinner, hideSpinner, showAlert } from './common.js';
+import { openAnalyzeModal } from './viewpage.js';
+let uploadedJdId = null;
+let uploadedJdContent = null;
+
+// ======== JD Upload Page JS ========
+
+// Show section (Raw Text / PDF / DOCX)
+function showSection(id, event) {
+	document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('active'));
+	document.querySelectorAll('.form-section').forEach(sec => sec.classList.remove('active'));
+	document.getElementById(id).classList.add('active');
+	if (event) event.currentTarget.classList.add('active');
+}
+
+// ======== Preview JD ========
+function previewJD() {
+	const jdContentValue = document.getElementById("jdContent").value.trim();
+	if (!jdContentValue) {
+		showAlert("Please enter JD text before previewing.");
+		return;
+	}
+
+	const previewBtn = document.querySelector('#rawText .action-buttons .primary-btn');
+	previewBtn.disabled = true;
+	previewBtn.textContent = uploadedJdId ? "Updating..." : "Uploading...";
+
+	const token = sessionStorage.getItem('token');
+
+	// Decide endpoint & method
+	const url = uploadedJdId ? `/api/uploadpage/jd/${uploadedJdId}` : '/api/uploadpage/jd';
+	const method = uploadedJdId ? 'PUT' : 'POST'; // POST = new, PUT = update
+
+	fetch(url, {
+		method,
+		headers: {
+			'Content-Type': 'text/plain',
+			'Authorization': `Bearer ${token || ''}`
+		},
+		body: jdContentValue
+	})
+		.then(res => {
+			if (!res.ok) throw new Error("Failed to upload JD text.");
+			return res.json(); // backend returns { jdId, titles: [...], companies: [...] }
+		})
+		.then(data => {
+			uploadedJdId = data.jdId; // store the JD ID for future edits
+			uploadedJdContent = data.content;
+
+			// Hide preview button
+			previewBtn.style.display = "none";
+
+			const hidden = document.getElementById("hiddenFields");
+			hidden.style.display = "block";
+			hidden.style.opacity = "0";
+			hidden.style.maxHeight = "0";
+			setTimeout(() => {
+				hidden.classList.add("visible");
+				hidden.style.transition = "opacity 0.4s ease, max-height 0.5s ease";
+				hidden.style.opacity = "1";
+				hidden.style.maxHeight = "500px";
+			}, 50);
+
+			// Add Edit JD button if not present
+			if (!document.getElementById("editJD")) {
+				const editBtn = document.createElement("button");
+				editBtn.className = "secondary-btn";
+				editBtn.id = "editJD";
+				editBtn.textContent = "Edit JD";
+				editBtn.onclick = editJD;
+				hidden.querySelector(".action-buttons").appendChild(editBtn);
+			}
+
+			// Populate candidates dynamically based on type
+			populateCandidates();
+		})
+		.catch(err => {
+			console.error(err);
+			showAlert(err.message || "Failed to upload JD.");
+		})
+		.finally(() => {
+			previewBtn.disabled = false;
+			previewBtn.textContent = uploadedJdId ? "Update & Preview" : "Preview & Upload";
+		});
+}
+
+// ======== Populate Candidates from API ========
+function populateCandidates() {
+	if (!uploadedJdId) return;
+
+	const token = sessionStorage.getItem('token');
+	fetch(`/api/jd/${uploadedJdId}/candidates`, {
+		method: 'GET',
+		headers: { 'Authorization': `Bearer ${token || ''}` }
+	})
+		.then(res => res.json())
+		.then(data => {
+			const titleSelect = document.getElementById("jdTitleSelect");
+			const companySelect = document.getElementById("companyNameSelect");
+			const titleOther = document.getElementById("jdTitleOther");
+			const companyOther = document.getElementById("companyOther");
+
+			// Clear existing dropdown options completely
+			titleSelect.innerHTML = '<option value="">Select Title...</option>';
+			companySelect.innerHTML = '<option value="">Select Company...</option>';
+
+			// Reset “Other” fields to disabled and empty
+			titleOther.disabled = true;
+			titleOther.value = '';
+			titleOther.classList.remove("editable");
+
+			companyOther.disabled = true;
+			companyOther.value = '';
+			companyOther.classList.remove("editable");
+
+			// Populate new candidate options
+			data.forEach(c => {
+				const opt = document.createElement("option");
+				opt.value = c.candidateValue;
+				opt.textContent = c.candidateValue;
+				if (c.selected) opt.selected = true;
+
+				if (c.type === "TITLE") titleSelect.add(opt);
+				else if (c.type === "COMPANY") companySelect.add(opt);
+			});
+
+			// Always append “Other” as the last option
+			titleSelect.insertAdjacentHTML('beforeend', `<option value="Other">Other</option>`);
+			companySelect.insertAdjacentHTML('beforeend', `<option value="Other">Other</option>`);
+		})
+		.catch(err => console.error("Failed to fetch candidates", err));
+}
+
+
+// ======== Select candidate and update JD ========
+function confirmCandidateSelection() {
+	const selectedOption = document.querySelector('#candidateList option:checked');
+	if (!selectedOption) {
+		showAlert("Please select a candidate.");
+		return;
+	}
+
+	const token = sessionStorage.getItem('token');
+
+	fetch(`/api/jd/${uploadedJdId}/select`, {
+		method: 'POST',
+		headers: {
+			'Authorization': `Bearer ${token || ''}`,
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			jdValueType: "COMPANY", // you can determine dynamically from candidatesData if needed
+			selectedJdValue: selectedOption.value
+		})
+	})
+		.then(res => res.json())
+		.then(updatedJD => {
+			showAlert("JD updated successfully!");
+			console.log("JD updated:", updatedJD);
+		})
+		.catch(err => showAlert(err.message));
+}
+
+// ======== Edit JD ========
+function editJD() {
+	const hiddenFields = document.getElementById("hiddenFields");
+	const previewBtn = document.querySelector('#rawText .action-buttons .primary-btn');
+	const jdBlock = document.getElementById("jdBlock");
+	const editBtn = document.getElementById("editJD");
+
+	hiddenFields.style.transition = "opacity 0.4s ease, max-height 0.4s ease";
+	hiddenFields.style.opacity = "0";
+	hiddenFields.style.maxHeight = "0";
+
+	if (editBtn) {
+		editBtn.style.transition = "opacity 0.4s ease";
+		editBtn.style.opacity = "0";
+	}
+
+	setTimeout(() => {
+		hiddenFields.classList.remove("visible");
+		hiddenFields.style.display = "none";
+		if (editBtn) editBtn.remove();
+
+		if (previewBtn) {
+			previewBtn.style.display = "inline-block";
+			previewBtn.style.opacity = "0";
+			previewBtn.style.transform = "translateY(-10px)";
+			setTimeout(() => {
+				previewBtn.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+				previewBtn.style.opacity = "1";
+				previewBtn.style.transform = "translateY(0)";
+			}, 50);
+		}
+
+		jdBlock.classList.remove("partial-retract");
+	}, 400);
+}
+
+// ======== Confirm Upload ========
+async function confirmUpload() {
+	if (!uploadedJdId) {
+		showAlert("No JD uploaded yet!");
+		return;
+	}
+
+	const jdTitle = document.getElementById("jdTitleSelect").value === "Other" ? document.getElementById("jdTitleOther").value.trim() : document.getElementById("jdTitleSelect").value;
+	const companyName = document.getElementById("companyNameSelect").value === "Other" ? document.getElementById("companyOther").value.trim() : document.getElementById("companyNameSelect").value;
+
+	const token = sessionStorage.getItem('token');
+
+	showSpinner();
+
+	try {
+		// 1️⃣ Update TITLE
+		if (jdTitle) {
+			const titleRes = await fetch(`/api/jd/${uploadedJdId}/select`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${token || ''}`
+				},
+				body: JSON.stringify({
+					jdValueType: "TITLE",
+					selectedJdValue: jdTitle
+				})
+			});
+			if (!titleRes.ok) throw new Error("Failed to update JD title");
+		}
+
+		// 2️⃣ Update COMPANY
+		if (companyName) {
+			const companyRes = await fetch(`/api/jd/${uploadedJdId}/select`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${token || ''}`
+				},
+				body: JSON.stringify({
+					jdValueType: "COMPANY",
+					selectedJdValue: companyName
+				})
+			});
+			if (!companyRes.ok) throw new Error("Failed to update JD company");
+		}
+
+		hideSpinner();
+		postUploadUI(); // existing UI logic
+	} catch (err) {
+		hideSpinner();
+		console.error(err);
+		showAlert(err.message || "Failed to update JD selections.");
+	}
+}
+
+//postUploadUI
+function postUploadUI() {
+	const jdBlock = document.getElementById("jdBlock");
+	const hiddenFields = document.getElementById("hiddenFields");
+	const quickLinks1 = document.getElementById('quickLinks1');
+
+	hiddenFields.style.transition = "opacity 0.4s ease, max-height 0.4s ease";
+	hiddenFields.style.opacity = "0";
+	hiddenFields.style.maxHeight = "0";
+
+	jdBlock.style.transition = "max-height 0.5s ease, opacity 0.4s ease";
+	jdBlock.classList.add("full-retract");
+
+	setTimeout(() => {
+		hiddenFields.classList.remove("visible");
+		hiddenFields.style.display = "none";
+		quickLinks1.style.opacity = "1";
+		quickLinks1.style.display = "block";
+		quickLinks1.style.transition = "opacity 0.5s ease";
+		setTimeout(() => quickLinks1.style.opacity = "0", 50);
+
+		const postUpload = document.getElementById("postUpload");
+		const successMsg = document.createElement("div");
+		successMsg.innerHTML = `<span style="color:#555;font-weight:700;font-size:16px;">✓ JD Uploaded Successfully!</span>`;
+		successMsg.style.textAlign = "center";
+		successMsg.style.marginBottom = "15px";
+		successMsg.classList.add("fade-in");
+		postUpload.parentNode.insertBefore(successMsg, postUpload);
+
+		setTimeout(() => {
+			postUpload.classList.add("visible");
+
+			const quickLinks = document.getElementById("quickLinks");
+			quickLinks.innerHTML = `
+                <a href="/jdupload">Upload Another JD</a>
+                <a href="/dashboard">Back to Dashboard</a>
+                <a href="/jdview">Go to JD Main Page</a>
+            `;
+			quickLinks.style.opacity = "0";
+			quickLinks.style.display = "block";
+			quickLinks.style.transition = "opacity 0.5s ease";
+			setTimeout(() => quickLinks.style.opacity = "1", 50);
+		}, 300);
+
+		//functionality for the postupload buttons
+		postUpload.querySelector("button:nth-child(1)").addEventListener("click", () => {
+		    if (!uploadedJdId || !uploadedJdContent) {
+		        showAlert("JD not uploaded yet!");
+		        return;
+		    }
+
+		    openAnalyzeModal("jd", uploadedJdId, uploadedJdContent);
+		});
+
+		// Second button placeholder
+		postUpload.querySelector("button:nth-child(2)").addEventListener("click", () => {
+			showAlert("Upload Resume + Analyze feature coming soon!");
+		});
+
+		// Third button placeholder
+		postUpload.querySelector("button:nth-child(3)").addEventListener("click", () => {
+			showAlert("Analyze with Existing Resume feature coming soon!");
+		});
+
+
+
+	}, 400);
+}
+
+
+// ======== Handle "Other" Input for Selects ========
+document.getElementById("jdTitleSelect").addEventListener("change", (e) => {
+	const otherInput = document.getElementById("jdTitleOther");
+	if (e.target.value === "Other") {
+		otherInput.disabled = false;
+		otherInput.classList.add("editable");
+		otherInput.focus();
+	} else {
+		otherInput.disabled = true;
+		otherInput.classList.remove("editable");
+		otherInput.value = '';
+	}
+});
+
+document.getElementById("companyNameSelect").addEventListener("change", (e) => {
+	const otherInput = document.getElementById("companyOther");
+	if (e.target.value === "Other") {
+		otherInput.disabled = false;
+		otherInput.classList.add("editable");
+		otherInput.focus();
+	} else {
+		otherInput.disabled = true;
+		otherInput.classList.remove("editable");
+		otherInput.value = '';
+	}
+});
+
+// ======== Expose functions globally for HTML onclick ========
+window.showSection = showSection;
+window.previewJD = previewJD;
+window.editJD = editJD;
+window.confirmUpload = confirmUpload;
+
+window.addEventListener('DOMContentLoaded', () => {
+	const quickLinks1 = document.getElementById('quickLinks1');
+	if (!quickLinks1) return;
+
+	// Initially hide
+	quickLinks1.style.opacity = "0";
+	quickLinks1.style.display = "block";
+
+	// Fade in after 0.25s
+	setTimeout(() => {
+		quickLinks1.style.transition = "opacity 0.4s ease";
+		quickLinks1.style.opacity = "1";
+	}, 250);
+});

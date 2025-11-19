@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login - Resume Analyzer</title>
+	<style>
+		body {
+			margin: 0;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background: linear-gradient(135deg, #FFF0E0 0%, #FFE1B8 100%);
+			color: #333;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.card {
+			background: #fff8f0;
+			border-radius: 16px;
+			padding: 40px 30px;
+			width: 380px;
+			box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+			text-align: center;
+		}
+
+		h2 {
+			margin-bottom: 20px;
+			color: #FF6F42;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		input[type="text"],
+		input[type="password"] {
+			padding: 12px 14px;
+			border-radius: 10px;
+			border: 1px solid #ddd;
+			font-size: 16px;
+			transition: border 0.3s;
+		}
+
+		input:focus {
+			outline: none;
+			border-color: #FF8C42;
+			box-shadow: 0 0 5px rgba(255, 111, 30, 0.4);
+		}
+
+		.btn-group {
+			display: flex;
+			justify-content: center;
+			gap: 20px;
+			margin-top: 20px;
+		}
+
+		.primary-btn {
+			border: none;
+			padding: 14px 32px;
+			font-size: 16px;
+			border-radius: 12px;
+			cursor: pointer;
+			font-weight: 600;
+			color: #fff;
+			background: linear-gradient(135deg, #FF8C42 0%, #FF6F1E 100%);
+			box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+			transition: all 0.3s ease;
+		}
+
+		.primary-btn:hover {
+			transform: translateY(-2px) scale(1.02);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+		}
+
+		.guest-wrapper {
+			margin-top: 30px;
+			/* increase spacing */
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 8px;
+			/* small gap between text and button */
+		}
+
+		.guest-btn {
+			border: 1px solid #FF8C42;
+			background: transparent;
+			color: #FF8C42;
+			border-radius: 10px;
+			padding: 6px 20px;
+			font-size: 14px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		.guest-btn:hover {
+			background: #FF8C42;
+			color: #fff;
+			transform: translateY(-1px);
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+		}
+
+		.signup-link {
+			margin-top: 12px;
+			font-size: 14px;
+			color: #555;
+		}
+
+		.signup-link a {
+			color: #FF8C42;
+			text-decoration: none;
+			font-weight: 500;
+		}
+
+		.signup-link a:hover {
+			text-decoration: underline;
+		}
+
+		/* Spinner overlay */
+		.spinner-overlay {
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		    background: rgba(255, 240, 224, 0.7); /* soft overlay */
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    z-index: 9999;
+		}
+
+		/* Gradient spinner */
+		.gradient-spinner {
+		    width: 60px;
+		    height: 60px;
+		    border-radius: 50%;
+		    background: conic-gradient(
+		        #FFEAD8,  /* soft whiteish part */
+		        #FFD399,  /* lighter & brighter orange */
+		        rgb(255, 128, 0),  /* bright warm orange */
+		        #FFEAD8   /* loop back to soft white */
+		    );
+		    animation: spin 1s linear infinite;
+		    position: relative;
+		}
+
+		/* Inner circle for donut effect */
+		.gradient-spinner::before {
+		    content: "";
+		    position: absolute;
+		    top: 8px;
+		    left: 8px;
+		    width: 44px;
+		    height: 44px;
+		    background: #fff8f0;  /* matches card background */
+		    border-radius: 50%;
+		}
+
+		/* Spin animation */
+		@keyframes spin {
+		    0% { transform: rotate(0deg); }
+		    100% { transform: rotate(360deg); }
+		}
+	</style>
+</head>
+
+<body>
+	<div class="card">
+		<h2>Login to Resume Analyzer</h2>
+		<form id="loginForm">
+			<input type="text" id="userName" placeholder="Username" required>
+			<input type="password" id="password" placeholder="Password" required>
+			<div class="btn-group">
+				<button type="submit" class="primary-btn">Login</button>
+			</div>
+		</form>
+
+		<div class="guest-wrapper">
+			<div>No account yet? Feeling adventurous?</div>
+			<button class="guest-btn" onclick="window.location.href='/guest'">Try as Guest</button>
+		</div>
+
+		<div class="signup-link">
+			Don't have an account? <a href="/signup">Sign up here</a>
+		</div>
+	</div>
+
+	<script>
+		document.getElementById("loginForm").addEventListener("submit", function(e) {
+		    e.preventDefault();
+
+		    const spinner = document.getElementById("spinner-overlay");
+		    spinner.style.display = "flex";  // show spinner
+
+		    const data = {
+		        userName: document.getElementById("userName").value,
+		        password: document.getElementById("password").value
+		    };
+
+		    fetch('/api/user/login', {
+		        method: 'POST',
+		        headers: {'Content-Type': 'application/json'},
+		        body: JSON.stringify(data)
+		    })
+		    .then(res => {
+		        if(!res.ok) throw new Error("Invalid credentials");
+		        return res.json();
+		    })
+		    .then(response => {
+		        sessionStorage.setItem("token", response.token);
+
+		            window.location.href = "/dashboard";
+		    })
+		    .catch(err => {
+		        spinner.style.display = "none";  // hide spinner on error
+		        alert("Login failed: " + err.message);
+		    });
+		});
+		
+		console.log(sessionStorage.getItem("token"));
+	</script>
+
+	<!-- Spinner overlay -->
+	<div id="spinner-overlay" class="spinner-overlay" style="display:none;">
+	    <div class="gradient-spinner"></div>
+	</div>
+</body>
+
+</html>

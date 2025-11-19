@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Settings - Resume Analyzer</title>
+	<link rel="stylesheet" th:href="@{/css/dashboard.css}">
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+	<link rel="stylesheet" th:href="@{/css/settings.css}">
+</head>
+
+<body>
+	<!-- Sidebar (main app sidebar) -->
+	<aside class="dashboard-sidebar">
+		<div class="logo">Resume Analyzer</div>
+		<nav>
+			<ul>
+				<li><a href="/dashboard">Overview</a></li>
+				<li><a href="/resumeview">Resume Dashboard</a></li>
+				<li><a href="/jdview">JD Dashboard</a></li>
+				<li><a href="/analyzedashboard">Analysis Dashboard</a></li>
+				<li><a href="/reports">Reports</a></li>
+				<li><a href="#" class="active">Settings</a></li>
+			</ul>
+		</nav>
+	</aside>
+
+	<!-- Main Container -->
+	<div class="dashboard-container">
+
+		<!-- Header -->
+		<header class="dashboard-header">
+			<div class="user-menu">
+				<span id="welcomeMessage">Welcome, User</span>
+				<div class="dropdown">
+					<button class="dropdown-toggle">⚙️</button>
+					<div class="dropdown-menu">
+						<button id="logoutButton">Logout</button>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- Settings Body -->
+		<main class="settings-main">
+
+			<div class="settings-container">
+				<!-- Sidebar for settings tabs -->
+				<aside class="settings-sidebar">
+					<ul>
+						<li class="tab-link active" data-tab="profile">👤 Profile</li>
+						<li class="tab-link" data-tab="security">🔒 Security</li>
+						<li class="tab-link" data-tab="about">ℹ️ About App</li>
+					</ul>
+				</aside>
+
+				<!-- Content area -->
+				<section class="settings-content">
+
+					<!-- Profile -->
+					<!-- Profile -->
+					<div id="profile" class="tab-content active">
+						<h2>Profile Information</h2>
+						<div class="settings-card profile-card">
+
+							<!-- View Mode -->
+							<div class="profile-view-mode" id="profileView">
+								<div class="profile-card-inner">
+
+									<!-- Profile Picture -->
+									<div class="profile-image-section">
+										<img src="/images/avatar.png" alt="Profile Picture" id="profileImage"
+											class="profile-pic">
+									</div>
+
+									<!-- Profile Info -->
+									<div class="profile-info-section">
+										<div class="profile-row">
+											<span class="profile-label">👤 Full Name:</span>
+											<span class="profile-value" id="viewFullName">-</span>
+										</div>
+										<div class="profile-row">
+											<span class="profile-label">🆔 Username:</span>
+											<span class="profile-value" id="viewUsername">-</span>
+										</div>
+										<div class="profile-row">
+											<span class="profile-label">✉️ Email:</span>
+											<span class="profile-value" id="viewEmail">-</span>
+										</div>
+										<div class="profile-row">
+											<span class="profile-label">🏢 Company:</span>
+											<span class="profile-value" id="viewCompany">-</span>
+										</div>
+										<div class="profile-row">
+											<span class="profile-label">💼 Role:</span>
+											<span class="profile-value" id="viewRole">-</span>
+										</div>
+
+										<!-- Edit Button -->
+										<div class="profile-actions">
+											<button id="editProfileBtn" class="btn-primary">Edit</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Edit Mode -->
+							<div class="profile-edit-mode" id="profileEdit" style="display: none;">
+								<div class="profile-card-inner edit-mode">
+
+									<!-- Profile Picture Edit -->
+									<div class="profile-image-section">
+										<img src="/images/avatar.png" alt="Profile Picture" id="editProfileImage"
+											class="profile-pic">
+										<label class="upload-btn">
+											Change Picture
+											<input type="file" id="profilePicUpload" accept="image/*">
+										</label>
+									</div>
+
+									<!-- Editable Info Fields -->
+									<div class="profile-info-section">
+										<div class="form-row">
+											<label>Full Name</label>
+											<input type="text" id="editFullName" placeholder="Name ...">
+										</div>
+										<div class="form-row">
+											<label>Company</label>
+											<input type="text" id="editCompany" placeholder="Company ...">
+										</div>
+										<div class="form-row">
+											<label>Current Role</label>
+											<input type="text" id="editRole" placeholder="Designation ...">
+										</div>
+
+										<!-- Save / Cancel -->
+										<div class="form-actions">
+											<button id="saveProfileBtn" class="btn-primary">Save</button>
+											<button id="cancelEditBtn" class="btn-secondary">Cancel</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<!-- Security -->
+					<div id="security" class="tab-content">
+						<h2>Security Settings</h2>
+
+						<!-- Change Password Card -->
+						<div class="settings-card security-card">
+							<div class="card-header">
+								<img src="/images/lock.png" alt="Change Password" class="card-image">
+								<h3>Change Password</h3>
+							</div>
+							<div class="form-row">
+								<input type="password" id="currentPassword" placeholder="Current Password">
+							</div>
+							<div class="form-row">
+								<input type="password" id="newPassword" placeholder="New Password">
+							</div>
+							<div class="form-row">
+								<input type="password" id="confirmPassword" placeholder="Confirm Password">
+							</div>
+							<div class="form-actions">
+								<button class="btn-primary" id="update-pwd-btn">Update Password</button>
+							</div>
+						</div>
+
+						<!-- API Token Card -->
+						<div class="settings-card api-token-card">
+							<h3>API Token</h3>
+							<div class="token-preview">
+								<span class="visible-chars"></span>
+							</div>
+							<button class="btn-secondary" id="regenerate-btn">Regenerate</button>
+						</div>
+
+						<!-- Delete Account Card -->
+						<div class="settings-card delete-account-card">
+							<h3>Delete Account</h3>
+							<p>This action is <strong>permanent</strong>. Proceed carefully.</p>
+							<button class="btn-danger" id="delete-btn">Delete Account</button>
+						</div>
+					</div>
+
+					<!-- About -->
+					<div id="about" class="tab-content">
+						<h2>About Resume Analyzer</h2>
+						<div class="about-card">
+							<div class="about-header">
+								<img src="images/about.png" alt="About Icon" class="about-icon">
+								<div>
+									<h3>Resume Analyzer</h3>
+									<p class="tagline">AI-powered Resume Optimization Dashboard</p>
+								</div>
+							</div>
+
+							<div class="about-info">
+								<div class="info-item">
+									<i class="fas fa-code-branch"></i>
+									<span><strong>Version:</strong> 1.0.0</span>
+								</div>
+								<div class="info-item">
+									<i class="fas fa-users"></i>
+									<span><strong>Developed by:</strong> Resume Analyzer Team</span>
+								</div>
+								<div class="info-item">
+									<i class="fas fa-database"></i>
+									<span><strong>Database:</strong> MySQL</span>
+								</div>
+								<div class="info-item">
+									<i class="fas fa-calendar-alt"></i>
+									<span><strong>Last Updated:</strong> Oct 2025</span>
+								</div>
+							</div>
+
+							<hr>
+
+							<p class="about-note">
+								Resume Analyzer leverages natural language processing and AI matching algorithms
+								to compare resumes with job descriptions, highlight key gaps, and help candidates
+								optimize their profiles for better job matches.
+							</p>
+
+							<div class="about-footer">
+								<a href="#" class="link">View Documentation</a>
+								<a href="#" class="link">Report an Issue</a>
+							</div>
+						</div>
+					</div>
+
+				</section>
+			</div>
+		</main>
+	</div>
+
+	<script type="module" src="/js/settings.js" defer></script>
+	<div th:replace="~{fragments/modal-fragments :: deleteAccountModal}"></div>
+	<div th:replace="~{fragments/modal-fragments :: alertModal}"></div>
+</body>
+
+</html>

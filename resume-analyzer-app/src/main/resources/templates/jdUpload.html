@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Upload Job Description - Resume Analyzer</title>
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+	<link rel="stylesheet" th:href="@{/css/uploadpage.css}">
+	<link rel="stylesheet" th:href="@{/css/viewpage.css}">
+</head>
+
+<body>
+	<div class="upload-card">
+		<h2>Upload Job Description</h2>
+
+		<!-- Mode Selector -->
+		<div class="upload-options">
+			<button class="option-btn active" onclick="showSection('rawText', event)">Raw Text</button>
+			<button class="option-btn" onclick="showSection('pdf', event)">PDF</button>
+			<button class="option-btn" onclick="showSection('docx', event)">DOCX</button>
+		</div>
+
+		<div id="quickLinks1" style="display:none; text-align:center; margin-top:-20px;">
+			<a href="/dashboard">Back to User Dashboard</a>
+			<a href="/jdview">Back to JD Dashboard</a>
+		</div>
+
+
+
+
+		<!-- ===== Raw Text Section ===== -->
+		<div id="rawText" class="form-section active">
+			<div id="jdBlock">
+				<label for="jdContent">Paste JD Text</label>
+				<textarea id="jdContent" placeholder="Paste or type the job description here..."></textarea>
+
+				<div class="action-buttons">
+					<button data-type="jd" class="primary-btn" onclick="previewJD(this)">Preview & Upload</button>
+				</div>
+			</div>
+
+			<!-- Hidden Fields -->
+			<div id="hiddenFields" class="hidden-fields fade-in">
+				<div class="dropdown-group">
+					<label for="jdTitleSelect">Job Title</label>
+					<select id="jdTitleSelect">
+						<option value="">Select Title...</option>
+					</select>
+					<input id="jdTitleOther" type="text" placeholder="Enter title" disabled>
+				</div>
+
+				<div class="dropdown-group">
+					<label for="companyNameSelect">Company</label>
+					<select id="companyNameSelect">
+						<option value="">Select Company...</option>
+					</select>
+					<input id="companyOther" type="text" placeholder="Enter company" disabled>
+				</div>
+
+				<div class="action-buttons">
+					<button class="primary-btn" onclick="confirmUpload()">Confirm Upload</button>
+				</div>
+			</div>
+
+
+		</div>
+
+		<!-- ===== PDF Section ===== -->
+		<div id="pdf" class="form-section" data-file-type="pdf" data-category="jd">
+			<label>Upload PDF File</label>
+			<div class="file-upload">Click or drag & drop PDF here</div>
+		</div>
+
+		<!-- ===== DOCX Section ===== -->
+		<div id="docx" class="form-section" data-file-type="docx" data-category="jd">
+			<label>Upload DOCX File</label>
+			<div class="file-upload">Click or drag & drop DOCX here</div>
+		</div>
+
+		<!-- Post Upload -->
+		<div id="postUpload" class="action-buttons post-upload">
+			<button class="secondary-btn">Analyze JD</button>
+			<button class="secondary-btn">Upload Resume for Analysis</button>
+			<button class="secondary-btn">Analyze with Existing Resume</button>
+		</div>
+
+		<div id="quickLinks" style="display:none; text-align:center; margin-top:20px;"></div>
+	</div>
+
+	<div id="toastContainer" class="toast-container"></div>
+	<div th:replace="~{fragments/modal-fragments :: alertModal}"></div>
+	<div th:replace="~{fragments/modal-fragments :: analyzeModal}"></div>
+	<div th:replace="~{fragments/spinner-fragments :: spinner}"></div>
+	<div th:replace="~{fragments/modal-fragments :: analyzeSelectionModal}"></div>
+	<div th:replace="~{fragments/modal-fragments :: analyzeCompletionModal}"></div>
+	<script type="module" src="/js/uploadpage.js" defer></script>
+</body>
+
+</html>

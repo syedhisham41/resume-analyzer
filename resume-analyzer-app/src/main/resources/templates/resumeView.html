@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Resume Dashboard</title>
+	<link rel="stylesheet" th:href="@{/css/viewpage.css}">
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+
+<body>
+	<div class="dashboard" data-resume-page>
+		<h2>Resume Dashboard</h2>
+
+		<div class="header-bar-simple">
+			<div class="header-panel">
+				<p class="dashboard-tagline">Manage all Resumes efficiently</p>
+
+				<div class="header-content">
+					<div class="stat-card">
+						<h4 id="totalCount">0</h4>
+						<p>Total Resumes</p>
+					</div>
+
+					<div class="stat-card">
+						<h4 id="lastUploadedDate">—</h4>
+						<p>Last Uploaded</p>
+					</div>
+
+					<button class="upload-btn" onclick="window.location.href='/resumeupload'">
+						Upload New Resume
+					</button>
+				</div>
+				<div class="dashboard-tagline-click" onclick="window.location.href='/dashboard'">
+					Go to Main Dashboard
+				</div>
+			</div>
+		</div>
+
+		<!-- Recently Uploaded -->
+		<div class="recent-container">
+			<h3>Recently Uploaded</h3>
+			<div class="latest-section-container">
+				<div class="latest-section" id="recentUploads">
+					<!-- JS will populate recent 5 Resumes here -->
+				</div>
+			</div>
+		</div>
+
+		<!-- Search -->
+		<div class="search-container">
+			<div class="search-bar">
+				<input type="text" id="searchInput" placeholder="Search by title...">
+
+				<!-- Date range picker (hidden by default) -->
+				<input type="date" id="startDate" style="display:none;">
+				<input type="date" id="endDate" style="display:none;">
+
+				<div class="search-toggles">
+					<button type="button" class="toggle-btn active" data-mode="title">Title</button>
+					<button type="button" class="toggle-btn" data-mode="date">Date</button>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- All Resumes -->
+		<div class="resume-list" id="allUploads">
+			<!-- JS will populate all Resumes here -->
+		</div>
+	</div>
+
+	<!-- Spinner overlay -->
+	<div id="spinner-overlay" class="spinner-overlay" style="display:none;">
+		<div class="gradient-spinner"></div>
+	</div>
+
+	<script type="module" src="/js/viewpage.js" defer></script>
+	<script type="module" src="/js/common.js" defer></script>
+	<div id="toastContainer" class="toast-container"></div>
+	<div th:replace="~{fragments/modal-fragments :: deleteModal}"></div>
+	<div th:replace="~{fragments/modal-fragments :: alertModal}"></div>
+	<div th:replace="~{fragments/modal-fragments :: analyzeModal}"></div>
+	<div th:replace="~{fragments/modal-fragments :: analyzeSelectionModal}"></div>
+	<div th:replace="~{fragments/modal-fragments :: analyzeCompletionModal}"></div>
+</body>
+
+</html>
