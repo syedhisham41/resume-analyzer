@@ -1,3 +1,29 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
+  <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"/>
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/NLP-Transformers-blueviolet?style=for-the-badge&logo=ai&logoColor=white"/>
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Microservices-FF6F00?style=for-the-badge&logo=microgenetics&logoColor=white"/>
+</p>
+
+<p align="center">
+  <a href="https://github.com/syedhisham41/resume-analyzer/stargazers">
+    <img src="https://img.shields.io/github/stars/syedhisham41/resume-analyzer?style=social" alt="GitHub stars"/>
+  </a>
+  <a href="https://github.com/syedhisham41/resume-analyzer/network/members">
+    <img src="https://img.shields.io/github/forks/syedhisham41/resume-analyzer?style=social" alt="GitHub forks"/>
+  </a>
+  <a href="https://github.com/syedhisham41/resume-analyzer/issues">
+    <img src="https://img.shields.io/github/issues/syedhisham41/resume-analyzer" alt="GitHub issues"/>
+  </a>
+  <a href="https://github.com/syedhisham41/resume-analyzer/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/syedhisham41/resume-analyzer?color=blue" alt="License"/>
+  </a>
+</p>
+
 # 🧠 Resume Analyzer
 
 **AI-driven Resume Intelligence Platform built with Spring Boot, FastAPI, and NLP — helping job seekers and recruiters bridge the hiring gap through intelligent resume–JD matching, skill extraction, and ATS optimization.**
