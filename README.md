@@ -1,29 +1,3 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
-  <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"/>
-  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
-  <img src="https://img.shields.io/badge/NLP-Transformers-blueviolet?style=for-the-badge&logo=ai&logoColor=white"/>
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Microservices-FF6F00?style=for-the-badge&logo=microgenetics&logoColor=white"/>
-</p>
-
-<p align="center">
-  <a href="https://github.com/syedhisham41/resume-analyzer/stargazers">
-    <img src="https://img.shields.io/github/stars/syedhisham41/resume-analyzer?style=social" alt="GitHub stars"/>
-  </a>
-  <a href="https://github.com/syedhisham41/resume-analyzer/network/members">
-    <img src="https://img.shields.io/github/forks/syedhisham41/resume-analyzer?style=social" alt="GitHub forks"/>
-  </a>
-  <a href="https://github.com/syedhisham41/resume-analyzer/issues">
-    <img src="https://img.shields.io/github/issues/syedhisham41/resume-analyzer" alt="GitHub issues"/>
-  </a>
-  <a href="https://github.com/syedhisham41/resume-analyzer/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/syedhisham41/resume-analyzer?color=blue" alt="License"/>
-  </a>
-</p>
-
 # 🧠 Resume Analyzer
 
 **AI-driven Resume Intelligence Platform built with Spring Boot, FastAPI, and NLP — helping job seekers and recruiters bridge the hiring gap through intelligent resume–JD matching, skill extraction, and ATS optimization.**
@@ -94,19 +68,143 @@ This project demonstrates clean, modular, production-style design — blending S
 
 ## 🧩 Architecture Overview
 
-The system follows a **microservices architecture**:
+The **Resume Analyzer system** is designed using a modular **microservices architecture**, with clear separation of concerns between the application layer, ML/NLP engine, and data storage. Each component runs independently and communicates through REST APIs and is deployed using Docker for consistency across environments.
 
-- **Spring Boot Backend** – manages users, resumes, job descriptions, analysis and recent activity workflows.
-- **Python FastAPI ML Service** – performs NLP tasks such as keyword extraction, similarity scoring, and skill matching.
-- **MySQL Database** – stores resumes, JDs, recent activities, JD candidates and analysis results.
-- **Docker** – containerizes both backend and ML service for seamless deployment.
+---
 
-### 🗂 Project Structure
+## **1. Spring Boot Application (`resume-analyzer-app`)**
+
+This is the **core backend + UI** service.  
+It provides REST APIs, authentication, business logic, dashboards, and the Thymeleaf-based user interface.
+
+### **Key Responsibilities**
+
+- **REST API Layer**  
+  Handles résumé upload, JD upload, ATS scoring, keyword gap analysis, and analysis report generation.
+
+- **UI Layer**  
+  Built using Thymeleaf templates and Vanilla JavaScript for a clean, interactive UI experience.
+
+- **Business Logic Orchestration**  
+  Delegates all NLP-heavy processing to the ML Engine and merges the results into final ATS reports.
+
+- **Authentication & Security**
+  - JWT-based authentication  
+  - BCrypt password hashing  
+  - Secured endpoints with role-based access (User/Admin)  
+  - Username/password login & signup  
+  - Session management for secure interactions  
+
+- **Guest Mode**
+  - Allows users to try the analyzer without registration  
+  - Sandboxed flow with restricted permissions  
+  - Prevents write operations to user-specific database tables  
+  - Ensures guest isolation for security  
+
+- **Resume & JD Validation**
+  - Resume section validation  
+  - Basic rule-based extraction (experience, education, location)  
+  - Client/server-side validations  
+
+- **Activity Logging**
+  - Tracks uploads, JD creation, analysis requests, and report downloads  
+
+> **Note:** No ML or NLP computation is performed in the Spring Boot application.  
+> All heavy processing is delegated to the Python ML Engine.
+
+---
+
+## **2. Python ML/NLP Engine (`resume-analyzer-engine`)**
+
+A standalone **FastAPI microservice** dedicated to text processing, embeddings, feature extraction, and scoring.
+
+### **NLP Capabilities**
+
+- **Text Preprocessing**
+  - Tokenization  
+  - Part-of-speech tagging  
+  - Lemmatization  
+
+- **Entity & Skill Extraction**
+  - SpaCy NER for detecting titles, skills, organizations, and qualifications  
+  - Noun-chunking to derive role-specific keywords  
+  - Custom dictionaries for technical and domain-specific skills  
+
+- **Embeddings & Semantic Similarity**
+  - Generates semantic embeddings using **MiniLM transformer models**  
+  - Computes similarity using **cosine similarity (PyTorch)**  
+  - Used for Resume ↔ JD alignment and score generation  
+
+- **Keyword & Verb Extraction**
+  - Action verbs and role-relevant verbs  
+  - Highlights missing or low-frequency relevant keywords  
+
+- **ATS Relevance Scoring**
+  - Skill match ratio  
+  - Title/role similarity  
+  - Qualification and responsibility match  
+  - Missing keyword detection  
+  - Final Fit Score generation  
+
+### **Service Characteristics**
+
+- Stateless and horizontally scalable  
+- Runs independently inside Docker  
+- Exposes simple REST endpoints consumed by the Spring Boot app  
+
+---
+
+## **3. MySQL Database (`resume-analyzer-db`)**
+
+The primary storage layer for the system.
+
+### **Stores**
+
+- User accounts (username, email, password hash, roles, etc)
+- Uploaded resumes and extracted text
+- Job descriptions
+- ATS analysis results
+- Recent activity logs
+- Candidate → JD match history
+- Optional guest session data (temporary)
+
+### **Schema Characteristics**
+
+- Normalized relational schema  
+- Optimized for dashboard read performance  
+- Strong referential integrity  
+- Timestamp and audit fields for tracking changes  
+
+---
+
+## **4. Dockerized Deployment**
+
+The entire system is containerized and orchestrated through **Docker Compose**, ensuring a reproducible and portable environment.
+
+### **What Docker Provides**
+
+- Independent containers for:
+  - Spring Boot Application  
+  - Python ML Engine  
+  - MySQL Database  
+- Bridge network for internal communication  
+- Environment-variable-based configuration for secrets and URLs  
+- Consistent deployment across local, testing, and cloud environments  
+
+### **One-Command Startup**
+
+```bash
+docker compose up --build
+```
+
+---
+
+## 🗂 Project Structure
 
 ```bash
 resume-analyzer/
 ├── docker-conmpose.yaml                # Docker compose file
-├── ml-service/                         # Python NLP Microservice (FastAPI + SpaCy + MiniLM)
+├── resume-analyzer-engine/             # Python NLP Microservice (FastAPI + SpaCy + MiniLM)
 │   ├── Dockerfile                      # ML Docker setup
 │   ├── clean_text.py                   # Script t cleanup the input text
 │   ├── requirements.txt                # ML dependencies
@@ -120,7 +218,7 @@ resume-analyzer/
 │       ├── utils/                     # Common helper functions
 │       └── __pycache__/
 │
-└── resume-analyzer/                   # Spring Boot Backend
+└── resume-analyzer-app/               # Spring Boot Application
     ├── src/
     │   ├── main/
     │   │   ├── java/com/resumeanalyzer/
@@ -139,13 +237,15 @@ resume-analyzer/
     │   └── test/                     # Unit and integration tests
     │
     ├── data/                         # Sample input data
-    ├── Dockerfile                    # Backend Docker setup
+    ├── Dockerfile                    # Application Docker setup
     └── pom.xml                       # Maven configuration
 ```
-### Communication Flow:
-- Spring Boot backend sends HTTP requests to ML microservice using WebClient.  
-- ML service performs NLP extraction & similarity computation.  
-- Results are returned to backend → persisted in DB → served to UI.
+### 🔄 Communication Flow
+
+- The **Spring Boot backend** communicates with the **ML/NLP microservice** using `WebClient` over REST.
+- The **ML Engine** performs all heavy text processing: NLP extraction, embedding generation, and similarity scoring.
+- The processed results are returned to the Spring Boot service.
+- The backend **stores the results** in the database and **exposes them to the UI** through REST endpoints and Thymeleaf views.
 
 ---
 
@@ -155,7 +255,7 @@ resume-analyzer/
 
 ```bash
 # From project root
-docker-compose up --build
+docker compose up --build
 ```
 This will spin up:
 - resume-analyzer (Java service)
@@ -169,14 +269,14 @@ Access the app at http://localhost:8080
 - Start MySQL locally or via Docker
 - Run ML Service
 ```bash
-cd ml-service
+cd resume-analyzer-engine
 pip install -r requirements.txt
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-- Run Spring Boot Backend
+- Run Spring Boot Application
 ```bash
-cd backend
+cd resume-analyzer-app
 mvn spring-boot:run
 ```
 

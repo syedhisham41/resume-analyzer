@@ -53,6 +53,7 @@ tmp/
 *.pid
 *.bak
 docker-compose.override.yml
+mysql-data/
 
 # === Environment Files ===
 .env
