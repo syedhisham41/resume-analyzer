@@ -98,6 +98,10 @@ The **Resume Analyzer system** is designed using a modular **microservices archi
 
 ---
 
+## Architecture Diagram
+
+![Resume Analyzer Architecture](assets/resume-analyzer-architecture.png)
+
 ## **1. Spring Boot Application (`resume-analyzer-app`)**
 
 This is the **core backend + UI** service.  
