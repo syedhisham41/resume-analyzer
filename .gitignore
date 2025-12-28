@@ -1,5 +1,6 @@
 # Compiled class file
 *.class
+build
 
 # Log file
 *.log
@@ -22,39 +23,3 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
-
-# === Python / FastAPI ===
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-env/
-venv/
-*.egg-info/
-.Python
-
-
-# === IDEs ===
-.vscode/
-.idea/
-*.iml
-
-# === OS Files ===
-.DS_Store
-Thumbs.db
-
-# === Logs & Temp ===
-*.log
-logs/
-tmp/
-.cache/
-
-# === Docker ===
-*.pid
-*.bak
-docker-compose.override.yml
-mysql-data/
-
-# === Environment Files ===
-.env
-.env.local
