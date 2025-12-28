@@ -1,4 +1,4 @@
-package com.resumeanalyzer.jd.service;
+package com.resumeanalyzer;
 
 import org.junit.jupiter.api.Test;
 
